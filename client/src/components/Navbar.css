@@ -1,0 +1,58 @@
+.Navbar-container {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--m) var(--l);
+  height: 36px;
+}
+.Navbar-left {
+  display: flex;
+  justify-content: flex-start;
+}
+.Navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 3vw;
+}
+.Navbar-logo {
+  align-items: center;
+  width: 100px;
+  height: auto;
+}
+
+/* Group 1 */
+
+/* position: absolute;
+width: 185px;
+height: 72px;
+left: 1278px;
+top: 30px;
+ */
+
+/* Rectangle 1 */
+/* 
+position: absolute;
+width: 185px;
+height: 72px;
+left: 1278px;
+top: 30px;
+
+background: #9B99FF;
+border-radius: 50px; */
+
+/* start now */
+
+/* position: absolute;
+width: 128px;
+height: 39px;
+left: 1309px;
+top: 49px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 30px; */
+/* or 115% */
+
+/* color: #FFFFFF; */

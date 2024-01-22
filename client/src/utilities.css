@@ -15,11 +15,12 @@
 */
 
 /* TODO: REPLACE WITH YOUR OWN FONT! */
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200&display=swap");
 
 :root {
-  --primary: #396dff;
-  --primary--dim: #6987db;
+  --primary: #d5d1ff;
+  --secondary: #bfbaff;
+  --primary--dim: #5d6adf;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --grey: #f7f7f7;
@@ -34,12 +35,37 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-family: "Roboto", serif;
+  font-weight: lighter;
+  font-size: 20px;
 }
 
 form {
   flex-grow: 1;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bolder;
+  margin: 0;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.black-link:link,
+.black-link:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.purple-link:link,
+.purple-link:visited {
+  color: var(--primary--dim);
+  text-decoration: none;
 }
 
 .u-flex {

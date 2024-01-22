@@ -1,0 +1,65 @@
+.Home-container {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.Home-top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 10vh;
+  height: calc(90vh - 68px);
+  gap: 6vw;
+}
+.Home-logo {
+  width: 30vw;
+  height: auto;
+}
+.Home-top-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Home-top-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 300px;
+  gap: 2vh;
+}
+.Home-login {
+  font-weight: bold;
+  color: var(--primary--dim);
+}
+
+.Home-about-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 84vh;
+  padding: 8vh 8vw 8vh 8vw;
+  background-color: var(--secondary);
+}
+.Home-about-title {
+  display: flex;
+  gap: 1vw;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+.Home-about-logo {
+  width: 100px;
+  height: auto;
+}
+.Home-about-qna-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3vw;
+}
+.Home-about-qna {
+  display: flex;
+  flex-direction: column;
+}
+.Home-about-a {
+  padding-left: 3vw;
+}

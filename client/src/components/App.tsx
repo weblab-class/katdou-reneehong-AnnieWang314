@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { CredentialResponse } from "@react-oauth/google";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { get, post } from "../utilities";
 import NotFound from "./pages/NotFound";
-import Skeleton from "./pages/Skeleton";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
+import {
+  GoogleOAuthProvider,
+  GoogleLogin,
+  googleLogout,
+  CredentialResponse,
+} from "@react-oauth/google";
+import Navbar from "./Navbar";
+import "./App.css";
+//TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
@@ -17,7 +25,7 @@ const App = () => {
     get("/api/whoami")
       .then((user: User) => {
         if (user._id) {
-          // TRhey are registed in the database and currently logged in.
+          // They are registered in the database and currently logged in.
           setUserId(user._id);
         }
       })
@@ -43,20 +51,20 @@ const App = () => {
     post("/api/logout");
   };
 
-  // NOTE:
-  // All the pages need to have the props extended via RouteComponentProps for @reach/router to work properly. Please use the Skeleton as an example.
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          element={
-            <Skeleton handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
-          }
-          path="/"
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <div className="App-container">
+      <BrowserRouter>
+        <Navbar handleLogout={handleLogout} userId={userId} />
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Login handleLogin={handleLogin} userId={userId} />} path="/login" />
+          {/* <Route element={<Words />} path="/words" />
+              <Route element={<Learn />} path="/learn" />
+              <Route element={<Profile />} path="/profile" /> */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 
