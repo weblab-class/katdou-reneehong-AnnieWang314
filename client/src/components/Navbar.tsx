@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
@@ -9,6 +9,8 @@ type Props = {
 };
 
 const Navbar = (props: Props) => {
+  useEffect(() => {}, [props.userId]);
+
   return (
     <nav className="Navbar-container">
       <div className="Navbar-left">
@@ -17,7 +19,7 @@ const Navbar = (props: Props) => {
         </Link>
       </div>
       <div className="Navbar-right">
-        <a href="#about" className="black-link">
+        <a href="/#about" className="black-link">
           about
         </a>
         {props.userId !== undefined ? (
@@ -31,12 +33,14 @@ const Navbar = (props: Props) => {
             <Link to="/profile" className="black-link">
               profile
             </Link>
-            <button onClick={props.handleLogout}>logout</button>
+            <div onClick={props.handleLogout} className="Navbar-start Navbar-logout u-openSans500">
+              logout
+            </div>
           </>
         ) : (
           <>
-            <Link to="/login">
-              <button>start now</button>
+            <Link to="/login" className="Navbar-start u-openSans500">
+              start now
             </Link>
           </>
         )}
