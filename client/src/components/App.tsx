@@ -57,7 +57,12 @@ const App = () => {
         <Navbar handleLogout={handleLogout} userId={userId} />
         <Routes>
           <Route element={<Home />} path="/" />
-          <Route element={<Login handleLogin={handleLogin} userId={userId} />} path="/login" />
+          <Route
+            element={
+              <Login handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+            }
+            path="/login"
+          />
           {/* <Route element={<Words />} path="/words" />
               <Route element={<Learn />} path="/learn" />
               <Route element={<Profile />} path="/profile" /> */}
