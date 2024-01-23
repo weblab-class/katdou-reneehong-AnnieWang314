@@ -1,4 +1,10 @@
 import React, { useEffect } from "react";
+import {
+  GoogleOAuthProvider,
+  GoogleLogin,
+  googleLogout,
+  CredentialResponse,
+} from "@react-oauth/google";
 import { Link } from "react-router-dom";
 import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
@@ -11,6 +17,12 @@ type Props = {
 const Navbar = (props: Props) => {
   useEffect(() => {}, [props.userId]);
 
+  const handleLogout = () => {
+    props.handleLogout();
+    googleLogout();
+    window.location.replace("/login");
+  };
+
   return (
     <nav className="Navbar-container">
       <div className="Navbar-left">
@@ -22,7 +34,7 @@ const Navbar = (props: Props) => {
         <a href="/#about" className="black-link">
           about
         </a>
-        {props.userId !== undefined ? (
+        {props.userId ? (
           <>
             <Link to="/words" className="black-link">
               words
@@ -33,7 +45,7 @@ const Navbar = (props: Props) => {
             <Link to="/profile" className="black-link">
               profile
             </Link>
-            <div onClick={props.handleLogout} className="Navbar-start Navbar-logout u-openSans500">
+            <div onClick={handleLogout} className="Navbar-start Navbar-logout u-openSans500">
               logout
             </div>
           </>
