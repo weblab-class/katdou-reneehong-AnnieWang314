@@ -5,6 +5,9 @@ import { get, post } from "../utilities";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Words from "./pages/Words";
+import Learn from "./pages/Learn";
+import Profile from "./pages/Profile";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -63,9 +66,9 @@ const App = () => {
             }
             path="/login"
           />
-          {/* <Route element={<Words />} path="/words" />
-              <Route element={<Learn />} path="/learn" />
-              <Route element={<Profile />} path="/profile" /> */}
+          <Route element={<Words />} path="/words" />
+          <Route element={<Profile />} path="/profile" />
+          <Route element={<Learn />} path="/learn" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,0 +1,51 @@
+.Learn-container {
+  height: calc(85vh - 68px);
+  display: flex;
+  gap: 8vw;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0 10vh 0;
+}
+.Learn-lib {
+  width: 24vw;
+  height: 56vh;
+  padding: 30px;
+  background-color: #f0eeff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Learn-title {
+  width: 24vw;
+  height: 48px;
+  border-radius: 10px;
+  background-color: var(--primary);
+  color: var(--primary--dim);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Learn-libraryWords {
+  display: flex;
+  flex-direction: column;
+  width: 24vw;
+  height: 400px;
+  border-radius: 8px;
+  gap: 2px;
+  overflow: scroll;
+}
+
+.Learn-libraryWord {
+  font-size: 16px;
+  padding: 10px;
+  background-color: #d5d1ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

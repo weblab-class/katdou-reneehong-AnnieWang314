@@ -1,0 +1,102 @@
+.Profile-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(70vh - 68px);
+  padding: 10vh 20vw 20vh 20vw;
+  gap: 3vh;
+}
+
+.Profile-person {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3vw;
+}
+
+.Profile-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  border-style: solid;
+  border-color: #5d6adf;
+  border-width: 10px;
+  margin: 20px;
+}
+
+.Profile-info {
+  margin: 20px;
+}
+
+.Profile-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Profile-username {
+  background-color: white;
+  border-radius: 20px;
+  border-color: #5d6adf;
+  border-width: 2px;
+  border-style: solid;
+  color: black;
+  font-size: 35px;
+  height: 47px;
+  width: auto;
+  margin: 20px;
+  padding: 10px;
+}
+
+.Profile-joinDate {
+  font-size: 16px;
+  color: black;
+  margin: 5px;
+}
+
+.Profile-bio {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.Profile-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.Profile-button {
+  width: 150px;
+  height: 60px;
+  border-color: #5d6adf;
+  border-width: 2px;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #5d6adf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-style: solid;
+}
+
+.Profile-progress {
+  margin-left: 50px;
+  width: 60%;
+  background-color: #9b99ff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px black;
+  margin-bottom: 5px;
+}
+
+.Profile-progress-bar {
+  height: 20px;
+  background-color: #5d6adf;
+  border-radius: 8px;
+}
+
+.Profile-wordCount {
+  margin-left: 50px;
+}

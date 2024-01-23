@@ -15,12 +15,13 @@
 */
 
 /* TODO: REPLACE WITH YOUR OWN FONT! */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&family=Roboto+Serif:opsz,wght@8..144,300;8..144,400;8..144,500&display=swap");
 
 :root {
   --primary: #d5d1ff;
   --secondary: #bfbaff;
   --primary--dim: #5d6adf;
+  --mid--purple: #9b99ff;
   --darkgrey: #d4d4d4;
   --medgrey: #e0e0e0;
   --grey: #f7f7f7;
@@ -32,11 +33,15 @@
   --l: 24px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", serif;
-  font-weight: lighter;
+  font-weight: 300;
   font-size: 20px;
 }
 
@@ -46,13 +51,13 @@ form {
 
 h1 {
   font-size: 48px;
-  font-weight: bolder;
+  font-weight: 500;
   margin: 0;
 }
 
 h2 {
   font-size: 36px;
-  font-weight: bolder;
+  font-weight: 500;
   margin: 0;
 }
 
@@ -66,6 +71,19 @@ h2 {
 .purple-link:visited {
   color: var(--primary--dim);
   text-decoration: none;
+}
+
+.u-openSans300 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+}
+.u-openSans400 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+.u-openSans500 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
 }
 
 .u-flex {

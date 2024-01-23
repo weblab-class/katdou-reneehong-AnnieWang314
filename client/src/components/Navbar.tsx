@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
 
 type Props = {
-  userId?: string;
+  userId: string | undefined;
   handleLogout: () => void;
 };
 
 const Navbar = (props: Props) => {
+  useEffect(() => {}, [props.userId]);
+
   return (
     <nav className="Navbar-container">
       <div className="Navbar-left">
@@ -17,15 +19,31 @@ const Navbar = (props: Props) => {
         </Link>
       </div>
       <div className="Navbar-right">
-        <a href="#about" className="black-link">
+        <a href="/#about" className="black-link">
           about
         </a>
-        <Link to="/login">
-          <button>start now</button>
-        </Link>
-        {/* <Link to="/words">words</Link>
-        <Link to="/learn">learn</Link>
-        <Link to="/profile">profile</Link> */}
+        {props.userId !== undefined ? (
+          <>
+            <Link to="/words" className="black-link">
+              words
+            </Link>
+            <Link to="/learn" className="black-link">
+              learn
+            </Link>
+            <Link to="/profile" className="black-link">
+              profile
+            </Link>
+            <div onClick={props.handleLogout} className="Navbar-start Navbar-logout u-openSans500">
+              logout
+            </div>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="Navbar-start u-openSans500">
+              start now
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
