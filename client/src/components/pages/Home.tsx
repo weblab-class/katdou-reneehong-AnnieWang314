@@ -3,24 +3,30 @@ import homeLogoUrl from "../../assets/homeLogo.svg";
 import logoUrl from "../../assets/logo.svg";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Home = () => {
   return (
     <div className="Home-container">
       <div className="Home-top-container">
-        <div className="Home-top-left">
-          <img src={homeLogoUrl} alt="LOGO" className="Home-logo" />
-        </div>
-        <div className="Home-top-right">
-          <h1>stay connected!</h1>
-          <div>ur path to learning the newest, gen-z language.</div>
-          <div>
-            have an account?{" "}
-            <Link to="/login" className="Home-login purple-link">
-              log in.
-            </Link>
+        <div className="Home-top-top">
+          <div className="Home-top-left">
+            <img src={homeLogoUrl} alt="LOGO" className="Home-logo" />
+          </div>
+          <div className="Home-top-right">
+            <h1>stay connected!</h1>
+            <div>ur path to learning the newest, gen-z language.</div>
+            <div>
+              have an account?{" "}
+              <Link to="/login" className="Home-login purple-link">
+                log in.
+              </Link>
+            </div>
           </div>
         </div>
+        <a href="#about" className="purple-link">
+          <IoIosArrowDown className="Home-top-arrow" />
+        </a>
       </div>
       <div id="about" className="Home-about-container">
         <div className="Home-about-title">
