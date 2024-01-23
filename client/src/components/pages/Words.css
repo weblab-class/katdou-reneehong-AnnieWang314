@@ -1,0 +1,39 @@
+body {
+  background-color: #d5d1ff;
+  font-family: "Roboto Serif", serif;
+}
+
+.All {
+  display: flex;
+  padding-top: 12%;
+  align-items: center;
+  flex-direction: column;
+}
+
+div {
+  padding-bottom: 35px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  width: 842px;
+  height: 58px;
+  border-radius: 20px;
+  fill: #f0eeff;
+  border-color: #5d6adf;
+  border-width: 2px;
+  font-size: 25px;
+  color: #7e7e7e;
+  background-color: #d5d1ff;
+  font-family: "Roboto Serif", serif;
+}
+
+.WordList {
+  color: #5d6adf;
+  font-size: 28px;
+  height: 350px;
+  width: 842px;
+  overflow: scroll;
+}

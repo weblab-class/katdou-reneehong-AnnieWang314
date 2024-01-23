@@ -1,0 +1,104 @@
+body {
+  background-color: #d5d1ff;
+  font-family: "Roboto Serif", serif;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20%;
+}
+
+.Profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px;
+  padding: 150px 20px 20px 20px;
+}
+
+.Photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 200px;
+  border-style: solid;
+  border-color: #5d6adf;
+  border-width: 10px;
+  margin: 20px;
+}
+
+.Info {
+  margin: 20px;
+}
+
+.User {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Username {
+  background-color: white;
+  border-radius: 20px;
+  border-color: #5d6adf;
+  border-width: 2px;
+  border-style: solid;
+  color: black;
+  font-size: 35px;
+  height: 47px;
+  width: auto;
+  margin: 20px;
+  padding: 10px;
+}
+
+.JoinDate {
+  font-size: 16px;
+  color: black;
+  margin: 5px;
+}
+
+.Bio {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.Buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+
+.Button {
+  width: 150px;
+  height: 60px;
+  border-color: #5d6adf;
+  border-width: 2px;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #5d6adf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  border-style: solid;
+}
+
+.Progress {
+  margin-left: 50px;
+  width: 60%;
+  background-color: #9b99ff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px black;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #5d6adf;
+  border-radius: 8px;
+}
+
+.WordCount {
+  margin-left: 50px;
+}

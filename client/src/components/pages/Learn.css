@@ -1,0 +1,52 @@
+body {
+  background-color: #d5d1ff;
+  font-family: "Roboto Serif", serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.Library {
+  width: 400px;
+  height: 500px;
+  background-color: #f0eeff;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Title {
+  width: 407px;
+  height: 46px;
+  border-radius: 10px;
+  background-color: #d5d1ff;
+  color: #5d6adf;
+  font-size: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.LibraryWords {
+  width: 407px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: scroll;
+}
+
+.LibraryWord {
+  height: 50px;
+  width: 397px;
+  background-color: #d5d1ff;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
