@@ -24,7 +24,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <a href="#about" className="purple-link">
+        <a href="/#about" className="purple-link">
           <IoIosArrowDown className="Home-top-arrow" />
         </a>
       </div>

@@ -19,40 +19,18 @@
   width: 100px;
   height: auto;
 }
-
-/* Group 1 */
-
-/* position: absolute;
-width: 185px;
-height: 72px;
-left: 1278px;
-top: 30px;
- */
-
-/* Rectangle 1 */
-/* 
-position: absolute;
-width: 185px;
-height: 72px;
-left: 1278px;
-top: 30px;
-
-background: #9B99FF;
-border-radius: 50px; */
-
-/* start now */
-
-/* position: absolute;
-width: 128px;
-height: 39px;
-left: 1309px;
-top: 49px;
-
-font-family: 'Open Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 26px;
-line-height: 30px; */
-/* or 115% */
-
-/* color: #FFFFFF; */
+.Navbar-start {
+  font-size: 16px;
+  background-color: var(--mid--purple);
+  color: var(--white);
+  text-decoration: none;
+  width: 104px;
+  height: 44px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Navbar-logout {
+  cursor: pointer;
+}
