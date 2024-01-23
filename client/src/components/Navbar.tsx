@@ -4,7 +4,7 @@ import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
 
 type Props = {
-  userId?: string;
+  userId: string | undefined;
   handleLogout: () => void;
 };
 
@@ -20,12 +20,26 @@ const Navbar = (props: Props) => {
         <a href="#about" className="black-link">
           about
         </a>
-        <Link to="/login">
-          <button>start now</button>
-        </Link>
-        {/* <Link to="/words">words</Link>
-        <Link to="/learn">learn</Link>
-        <Link to="/profile">profile</Link> */}
+        {props.userId !== undefined ? (
+          <>
+            <Link to="/words" className="black-link">
+              words
+            </Link>
+            <Link to="/learn" className="black-link">
+              learn
+            </Link>
+            <Link to="/profile" className="black-link">
+              profile
+            </Link>
+            <button onClick={props.handleLogout}>logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">
+              <button>start now</button>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
