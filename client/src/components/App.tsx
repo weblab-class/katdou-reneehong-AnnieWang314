@@ -18,6 +18,7 @@ import {
   CredentialResponse,
 } from "@react-oauth/google";
 import Navbar from "./Navbar";
+import Unauth from "./pages/Unauth";
 import "./App.css";
 //TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
 
@@ -66,9 +67,10 @@ const App = () => {
             }
             path="/login"
           />
-          <Route element={<Words />} path="/words" />
+          <Route element={<Words userId={userId} />} path="/words" />
           <Route element={<Profile />} path="/profile" />
           <Route element={<Learn />} path="/learn" />
+          <Route element={<Unauth />} path="/unauth" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

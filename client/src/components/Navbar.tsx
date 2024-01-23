@@ -18,9 +18,9 @@ const Navbar = (props: Props) => {
   useEffect(() => {}, [props.userId]);
 
   const handleLogout = () => {
+    window.location.replace("/login");
     props.handleLogout();
     googleLogout();
-    window.location.replace("/login");
   };
 
   return (
