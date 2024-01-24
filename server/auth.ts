@@ -24,6 +24,9 @@ const getOrCreateUser = (user: TokenPayload) => {
       const newUser = new User({
         name: user.name,
         googleid: user.sub,
+        aboutme: "",
+        color: "#d5d1ff",
+        date: new Date().toLocaleDateString(),
       });
       return newUser.save();
     }

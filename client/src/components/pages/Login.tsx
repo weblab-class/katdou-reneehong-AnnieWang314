@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   GoogleOAuthProvider,
   GoogleLogin,
@@ -16,6 +17,8 @@ type Props = {
 const GOOGLE_CLIENT_ID = "61715148833-ikdciqpnr0b30uoits0nc3nhq2187neb.apps.googleusercontent.com";
 
 const Login = (props: Props) => {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     props.handleLogout();
     googleLogout();
@@ -23,7 +26,8 @@ const Login = (props: Props) => {
 
   const handleLogin = (credentialResponse: CredentialResponse) => {
     props.handleLogin(credentialResponse);
-    window.location.replace("/profile");
+    navigate("/profile");
+    // window.location.replace("/profile");
   };
 
   return (

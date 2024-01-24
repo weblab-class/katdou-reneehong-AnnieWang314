@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import Words from "./pages/Words";
 import Learn from "./pages/Learn";
 import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import EditProfile from "./pages/EditProfile";
+import Active from "./pages/Active";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -24,6 +27,8 @@ import "./App.css";
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [color, setColor] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
 
   useEffect(() => {
     get("/api/whoami")
@@ -46,6 +51,8 @@ const App = () => {
     console.log(`Logged in as ${decodedCredential.name}`);
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
+      setColor(user.color);
+      setAboutMe(user.aboutme);
       post("/api/initsocket", { socketid: socket.id });
     });
   };
@@ -68,9 +75,15 @@ const App = () => {
             path="/login"
           />
           <Route element={<Words userId={userId} />} path="/words" />
-          <Route element={<Profile />} path="/profile" />
-          <Route element={<Learn />} path="/learn" />
           <Route element={<Unauth />} path="/unauth" />
+          <Route
+            element={<Profile userName="" userDate="" aboutMe="" userColor="" />}
+            path="/profile"
+          />
+          <Route element={<Learn />} path="/learn" />
+          <Route element={<EditProfile />} path="/editprofile" />
+          <Route element={<Settings />} path="/settings" />
+          <Route element={<Active />} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

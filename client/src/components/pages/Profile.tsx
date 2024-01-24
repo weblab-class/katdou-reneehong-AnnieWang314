@@ -1,25 +1,40 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import EditProfile from "./EditProfile";
+import Settings from "./Settings";
 import "./Profile.css";
 
-const Profile = () => {
+type Props = {
+  userName: string;
+  userDate: string;
+  aboutMe: string;
+  userColor: string;
+};
+const Profile = (props: Props) => {
+  const { userName, userDate, aboutMe, userColor } = props;
+
   return (
     <div className="Profile-container">
       <div className="Profile-person">
-        <img className="Profile-photo" src="./me.jpg" alt="Profile" />
+        <div style={{ backgroundColor: userColor }} className="Profile-photo"></div>
         <div className="Profile-info">
           <div className="Profile-user">
-            <div className="Profile-username">@username</div>
-            <div className="Profile-joinDate">joined xx/xx/xx</div>
+            <div className="Profile-username">@{userName}</div>
+            <div className="Profile-joinDate">{userDate}</div>
           </div>
-          <div className="Profile-bio">about me section test test</div>
+          <div className="Profile-bio">{aboutMe}</div>
         </div>
       </div>
 
       <div className="Profile-buttons">
-        <div className="Profile-button">edit profile</div>
+        <Link to="/editprofile" style={{ textDecoration: "none" }} className="Profile-button">
+          edit profile
+        </Link>
         <div className="Profile-button">my friends</div>
         <div className="Profile-button">chat</div>
-        <div className="Profile-button">settings</div>
+        <Link to="/settings" style={{ textDecoration: "none" }} className="Profile-button">
+          settings
+        </Link>
       </div>
 
       <div className="Profile-progress-container">
