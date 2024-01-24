@@ -1,3 +1,56 @@
 .EditProfile-container {
+  display: flex;
+  padding-top: 10%;
+  padding-left: 25%;
+  padding-right: 25%;
+  align-items: left;
+  flex-direction: column;
+  height: calc(100vh - 68px);
+}
+
+.EditProfile-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.EditProfile-userColor-container {
+  display: flex;
+  margin: 20px;
+}
+
+.EditProfile-userColor-title {
   font-size: 20px;
+  width: 30%;
+  margin-right: 10px;
+}
+
+.EditProfile-userColor-searchBar {
+  border-color: var(--mid--purple);
+  border-width: 1px;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.EditProfile-aboutMe-container {
+  display: flex;
+  margin: 20px;
+}
+
+.EditProfile-aboutMe-title {
+  margin-right: 10px;
+}
+
+.EditProfile-aboutMe-searchBar {
+  border-color: var(--mid--purple);
+  border-width: 1px;
+  border-radius: 20px;
+  width: 16vw;
+  padding: 5px;
+}
+
+.EditProfile-backButton {
+  margin: 20px;
+  display: flex;
+  font-size: 25px;
+  color: #5d6adf;
 }

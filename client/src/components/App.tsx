@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Words from "./pages/Words";
 import Learn from "./pages/Learn";
 import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import EditProfile from "./pages/EditProfile";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -88,6 +90,8 @@ const App = () => {
             path="/profile"
           />
           <Route element={<Learn />} path="/learn" />
+          <Route element={<EditProfile />} path="/editprofile" />
+          <Route element={<Settings />} path="/settings" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
