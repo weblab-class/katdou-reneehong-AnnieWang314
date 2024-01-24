@@ -19,6 +19,12 @@ const GOOGLE_CLIENT_ID = "61715148833-ikdciqpnr0b30uoits0nc3nhq2187neb.apps.goog
 const Login = (props: Props) => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (props.userId) {
+      navigate("/profile");
+    }
+  }, [props.userId, navigate]);
+
   const handleLogout = () => {
     props.handleLogout();
     googleLogout();
@@ -26,7 +32,6 @@ const Login = (props: Props) => {
 
   const handleLogin = (credentialResponse: CredentialResponse) => {
     props.handleLogin(credentialResponse);
-    navigate("/profile");
     // window.location.replace("/profile");
   };
 

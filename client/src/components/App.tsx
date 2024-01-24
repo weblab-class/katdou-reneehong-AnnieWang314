@@ -77,13 +77,13 @@ const App = () => {
           <Route element={<Words userId={userId} />} path="/words" />
           <Route element={<Unauth />} path="/unauth" />
           <Route
-            element={<Profile userName="" userDate="" aboutMe="" userColor="" />}
+            element={<Profile userName="" userDate="" aboutMe="" userColor="" userId={userId} />}
             path="/profile"
           />
-          <Route element={<Learn userId={userId}/>} path="/learn" />
-          <Route element={<EditProfile userId={userId}/>} path="/editprofile" />
-          <Route element={<Settings userId={userId}/>} path="/settings" />
-          <Route element={<Active userId={userId}/>} path="/learn/active" />
+          <Route element={<Learn userId={userId} />} path="/learn" />
+          <Route element={<EditProfile userId={userId} />} path="/editprofile" />
+          <Route element={<Settings userId={userId} />} path="/settings" />
+          <Route element={<Active userId={userId} />} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
