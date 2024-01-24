@@ -2,8 +2,17 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Profile from "./Profile";
 import "./Settings.css";
+import Unauth from "./Unauth";
 
-const Settings = () => {
+type Props = {
+  userId: string | undefined;
+};
+
+const Settings = (props: Props) => {
+  if (!props.userId) {
+    window.location.replace("/unauth");
+    return <Unauth />;
+  }
   return (
     <div className="Settings-container">
       <div className="Settings-title">settings</div>

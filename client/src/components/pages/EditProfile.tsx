@@ -3,8 +3,13 @@ import { Routes, Route, Link } from "react-router-dom";
 import Profile from "./Profile";
 import { post } from "../../utilities";
 import "./EditProfile.css";
+import Unauth from "./Unauth";
 
-const EditProfile = () => {
+type Props = {
+  userId: string | undefined;
+};
+
+const EditProfile = (props: Props) => {
   const [color, setColor] = useState("");
   const [aboutMe, setAboutMe] = useState("");
 
@@ -37,7 +42,10 @@ const EditProfile = () => {
         });
     }
   };
-
+  if (!props.userId) {
+    window.location.replace("/unauth");
+    return <Unauth />;
+  }
   return (
     <div className="EditProfile-container">
       <div className="EditProfile-title">edit profile</div>
