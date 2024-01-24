@@ -10,6 +10,7 @@ import Learn from "./pages/Learn";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
+import Active from "./pages/Active";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -92,6 +93,7 @@ const App = () => {
           <Route element={<Learn />} path="/learn" />
           <Route element={<EditProfile />} path="/editprofile" />
           <Route element={<Settings />} path="/settings" />
+          <Route element={<Active />} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
