@@ -5,7 +5,7 @@ import {
   googleLogout,
   CredentialResponse,
 } from "@react-oauth/google";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
 
@@ -15,12 +15,13 @@ type Props = {
 };
 
 const Navbar = (props: Props) => {
-  useEffect(() => {}, [props.userId]);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     props.handleLogout();
     googleLogout();
-    window.location.replace("/login");
+    navigate("/login");
+    // window.location.replace("/login");
   };
 
   return (

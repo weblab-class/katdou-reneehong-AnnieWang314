@@ -17,6 +17,10 @@ const Learn = () => {
           <div className="Learn-libraryWord">slid into the dms</div>
           <div className="Learn-libraryWord">on fleek</div>
           <div className="Learn-libraryWord">caught in 4k</div>
+          <div className="Learn-libraryWord">caught in 4k</div>
+          <div className="Learn-libraryWord">caught in 4k</div>
+          <div className="Learn-libraryWord">caught in 4k</div>
+          <div className="Learn-libraryWord">caught in 4k</div>
         </div>
       </div>
       <div className="Learn-lib">
