@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   GoogleOAuthProvider,
   GoogleLogin,
@@ -16,24 +16,41 @@ type Props = {
 const GOOGLE_CLIENT_ID = "61715148833-ikdciqpnr0b30uoits0nc3nhq2187neb.apps.googleusercontent.com";
 
 const Login = (props: Props) => {
-  const { handleLogin } = props;
+  const handleLogout = () => {
+    props.handleLogout();
+    googleLogout();
+  };
+
+  const handleLogin = (credentialResponse: CredentialResponse) => {
+    props.handleLogin(credentialResponse);
+    window.location.replace("/profile");
+  };
 
   return (
     <div className="Login-container">
-      <div>log in</div>
-      <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      <div className="Login-box">
         {props.userId ? (
-          <button
-            onClick={() => {
-              googleLogout();
-            }}
-          >
-            log out
-          </button>
+          <>
+            <div>you are already logged in</div>
+            <div>want to log out?</div>
+            <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+              <button onClick={handleLogout}>logout</button>
+            </GoogleOAuthProvider>
+          </>
         ) : (
-          <GoogleLogin onSuccess={handleLogin} onError={() => console.log("Error Logging in")} />
+          <>
+            <h2>log in</h2>
+            <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+              <GoogleLogin
+                width="14px"
+                size="large"
+                onSuccess={handleLogin}
+                onError={() => console.log("Error Logging in")}
+              />
+            </GoogleOAuthProvider>
+          </>
         )}
-      </GoogleOAuthProvider>
+      </div>
     </div>
   );
 };

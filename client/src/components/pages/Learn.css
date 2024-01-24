@@ -10,7 +10,7 @@
   width: 24vw;
   height: 56vh;
   padding: 30px;
-  background-color: #f0eeff;
+  background-color: var(--light);
   border-radius: 20px;
   display: flex;
   flex-direction: column;

@@ -1,3 +1,19 @@
 .Login-container {
   height: calc(100vh - 68px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  border: 1px;
+  border-style: solid;
+  border-color: var(--primary--dim);
+  border-radius: 5px;
+  background-color: var(--light);
+  padding: 50px;
+  gap: 20px;
 }
