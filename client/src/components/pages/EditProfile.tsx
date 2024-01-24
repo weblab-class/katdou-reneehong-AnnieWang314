@@ -1,36 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Profile from "./Profile";
+import { post } from "../../utilities";
 import "./EditProfile.css";
 
 const EditProfile = () => {
+  const [color, setColor] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
+
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  };
+
+  const handleAboutMeChange = (event) => {
+    setAboutMe(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (color) {
+      post("/api/updatecolor", { color })
+        .then(() => {
+          console.log("Color updated");
+        })
+        .catch((error) => {
+          console.error("Error updating color: ", error);
+        });
+    }
+    if (aboutMe) {
+      post("/api/updateaboutme", { aboutMe })
+        .then(() => {
+          console.log("About me updated");
+        })
+        .catch((error) => {
+          console.error("Error updating about me: ", error);
+        });
+    }
+  };
+
   return (
     <div className="EditProfile-container">
       <div className="EditProfile-title">edit profile</div>
-      <div className="EditProfile-userColor-container">
-        <div className="EditProfile-userColor-title">change profile color here: </div>{" "}
-        {/* Note: class -> className */}
-        <form action="/search" method="get">
+      <form onSubmit={handleSubmit}>
+        <div className="EditProfile-userColor-container">
+          <div className="EditProfile-userColor-title">change profile color here: </div>{" "}
+          {/* Note: class -> className */}
           <input
             className="EditProfile-userColor-searchBar"
             type="text"
-            name="query"
+            name="color"
+            value={color}
+            onChange={handleColorChange}
             placeholder="#XXXXXX"
           />
-        </form>
-      </div>
-      <div className="EditProfile-aboutMe-container">
-        <div className="EditProfile-aboutMe-title">update about me: </div>{" "}
-        {/* Note: class -> className */}
-        <form action="/search" method="get">
+        </div>
+        <div className="EditProfile-aboutMe-container">
+          <div className="EditProfile-aboutMe-title">update about me: </div>{" "}
+          {/* Note: class -> className */}
           <input
             className="EditProfile-aboutMe-searchBar"
             type="text"
-            name="query"
+            name="aboutMe"
+            value={aboutMe}
+            onChange={handleAboutMeChange}
             placeholder="write text here..."
           />
-        </form>
-      </div>
+        </div>
+        <button type="submit" className="EditProfile-submitButton">
+          save changes
+        </button>
+      </form>
       <Link to="/profile" style={{ textDecoration: "none" }} className="EditProfile-backButton">
         back
       </Link>

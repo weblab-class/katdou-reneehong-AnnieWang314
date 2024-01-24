@@ -26,11 +26,8 @@ import "./App.css";
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
-  const [userName, setUserName] = useState<string>("");
-  const [aboutMe, setAboutMe] = useState<string>("");
-  const [userColor, setUserColor] = useState<string>("#d5d1ff");
-  const [userDate, setUserDate] = useState<string>("joined today!");
-  const currentDate = new Date().toLocaleDateString();
+  const [color, setColor] = useState("");
+  const [aboutMe, setAboutMe] = useState("");
 
   useEffect(() => {
     get("/api/whoami")
@@ -38,7 +35,6 @@ const App = () => {
         if (user._id) {
           // They are registered in the database and currently logged in.
           setUserId(user._id);
-          setUserName(user.name);
         }
       })
       .then(() =>
@@ -54,16 +50,15 @@ const App = () => {
     console.log(`Logged in as ${decodedCredential.name}`);
     post("/api/login", { token: userToken }).then((user) => {
       setUserId(user._id);
-      setUserName(user.name);
+      setColor(user.color);
+      setAboutMe(user.aboutme);
       post("/api/initsocket", { socketid: socket.id });
     });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
-    setUserName("");
     post("/api/logout");
-    setUserDate("last seen on " + currentDate);
   };
 
   return (
@@ -80,14 +75,7 @@ const App = () => {
           />
           <Route element={<Words />} path="/words" />
           <Route
-            element={
-              <Profile
-                userName={userName}
-                userDate={userDate}
-                aboutMe={aboutMe}
-                userColor={userColor}
-              />
-            }
+            element={<Profile userName="" userDate="" aboutMe="" userColor="" />}
             path="/profile"
           />
           <Route element={<Learn />} path="/learn" />
