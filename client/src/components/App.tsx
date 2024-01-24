@@ -80,10 +80,10 @@ const App = () => {
             element={<Profile userName="" userDate="" aboutMe="" userColor="" />}
             path="/profile"
           />
-          <Route element={<Learn />} path="/learn" />
-          <Route element={<EditProfile />} path="/editprofile" />
-          <Route element={<Settings />} path="/settings" />
-          <Route element={<Active />} path="/learn/active" />
+          <Route element={<Learn userId={userId}/>} path="/learn" />
+          <Route element={<EditProfile userId={userId}/>} path="/editprofile" />
+          <Route element={<Settings userId={userId}/>} path="/settings" />
+          <Route element={<Active userId={userId}/>} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

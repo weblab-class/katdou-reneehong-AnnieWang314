@@ -1,7 +1,15 @@
 import React from "react";
 import "./Active.css";
+import Unauth from "./Unauth";
 
-const Active = () => {
+type Props = {
+  userId: string | undefined;
+};
+const Active = (props: Props) => {
+    if (!props.userId) {
+        window.location.replace("/unauth");
+        return <Unauth />;
+      }
     return (
     <div className="Active-container">
     <div className="Active-card">

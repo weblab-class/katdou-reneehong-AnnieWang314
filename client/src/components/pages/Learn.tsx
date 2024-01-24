@@ -1,7 +1,17 @@
 import React from "react";
 import "./Learn.css";
+import Unauth from "./Unauth";
 
-const Learn = () => {
+type Props = {
+  userId: string | undefined;
+};
+
+const Learn = (props: Props) => {
+  if (!props.userId) {
+    window.location.replace("/unauth");
+    return <Unauth />;
+  }
+
   return (
     <div className="Learn-container">
       <div className="Learn-lib">

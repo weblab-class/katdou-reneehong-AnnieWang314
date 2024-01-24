@@ -3,6 +3,11 @@ import { Routes, Route, Link } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
 import "./Profile.css";
+import Unauth from "./Unauth";
+
+type Props2 = {
+  userId: string | undefined;
+};
 
 type Props = {
   userName: string;
@@ -10,9 +15,13 @@ type Props = {
   aboutMe: string;
   userColor: string;
 };
-const Profile = (props: Props) => {
+const Profile = (props: Props, props2: Props2) => {
   const { userName, userDate, aboutMe, userColor } = props;
-
+  if (!props2.userId) {
+    window.location.replace("/unauth");
+    return <Unauth />;
+  }
+  
   return (
     <div className="Profile-container">
       <div className="Profile-person">
