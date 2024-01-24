@@ -21,7 +21,6 @@ const Navbar = (props: Props) => {
     props.handleLogout();
     googleLogout();
     navigate("/login");
-    // window.location.replace("/login");
   };
 
   return (

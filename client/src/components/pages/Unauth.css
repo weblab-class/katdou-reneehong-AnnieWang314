@@ -1,0 +1,12 @@
+.Unauth-container {
+  height: calc(100vh - 468px);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 200px;
+}
+.Unauth-title {
+  text-align: center;
+}
