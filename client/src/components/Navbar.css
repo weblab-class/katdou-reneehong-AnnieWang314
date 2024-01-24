@@ -31,6 +31,11 @@
   justify-content: center;
   align-items: center;
 }
+
+.Navbar-start:hover {
+  background-color: var(--primary--dim);
+}
+
 .Navbar-logout {
   cursor: pointer;
 }
