@@ -5,23 +5,20 @@ import Settings from "./Settings";
 import "./Profile.css";
 import Unauth from "./Unauth";
 
-type Props2 = {
-  userId: string | undefined;
-};
-
 type Props = {
   userName: string;
   userDate: string;
   aboutMe: string;
   userColor: string;
+  userId: string | undefined;
 };
-const Profile = (props: Props, props2: Props2) => {
-  const { userName, userDate, aboutMe, userColor } = props;
-  if (!props2.userId) {
+const Profile = (props: Props) => {
+  const { userName, userDate, aboutMe, userColor, userId } = props;
+  if (!userId) {
     window.location.replace("/unauth");
     return <Unauth />;
   }
-  
+
   return (
     <div className="Profile-container">
       <div className="Profile-person">
