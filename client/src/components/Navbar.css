@@ -39,3 +39,8 @@
 .Navbar-logout {
   cursor: pointer;
 }
+
+.active-link {
+  color: var(--primary--dim);
+  text-decoration: none;
+}
