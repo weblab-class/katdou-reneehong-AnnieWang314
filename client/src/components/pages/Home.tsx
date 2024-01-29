@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import homeLogoUrl from "../../assets/homeLogo.svg";
 import logoUrl from "../../assets/logo.svg";
 import "./Home.css";
@@ -6,12 +6,30 @@ import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
 
 const Home = () => {
+  const [animation1, setAnimation1] = useState("bounce11");
+  const [animation2, setAnimation2] = useState("bounce21");
+  const [animation3, setAnimation3] = useState("bounce31");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimation1((prevAnimation) => (prevAnimation === "bounce11" ? "bounce12" : "bounce11"));
+      setAnimation2((prevAnimation) => (prevAnimation === "bounce21" ? "bounce22" : "bounce21"));
+      setAnimation3((prevAnimation) => (prevAnimation === "bounce31" ? "bounce32" : "bounce31"));
+    }, 4000); // Change the animation every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="Home-container">
       <div className="Home-top-container">
         <div className="Home-top-top">
           <div className="Home-top-left">
-            <img src={homeLogoUrl} alt="LOGO" className="Home-logo" />
+            <div className="Home-bounce-container">
+              <div className={`Home-bounce circle1 ${animation1}`}></div>
+              <div className={`Home-bounce circle2 ${animation2}`}></div>
+              <div className={`Home-bounce circle3 ${animation3}`}></div>
+            </div>
           </div>
           <div className="Home-top-right">
             <h1>stay connected!</h1>

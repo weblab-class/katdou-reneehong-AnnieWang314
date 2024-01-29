@@ -16,10 +16,104 @@
   justify-content: center;
   gap: 6vw;
 }
-.Home-logo {
+
+.Home-bounce-container {
   width: 30vw;
-  height: auto;
+  height: 30vw;
+  border-radius: 50%;
+  background-color: var(--mid--purple);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.Home-bounce {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 50%;
+  background-color: var(--secondary); /* Dark purple */
+  position: absolute;
+}
+
+/* Keyframe animations for the bouncing effect */
+@keyframes bounce11 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -14vw);
+  }
+}
+@keyframes bounce12 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 14vw);
+  }
+}
+
+@keyframes bounce21 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12.1vw, 7vw);
+  }
+}
+@keyframes bounce22 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12.1vw, -7vw);
+  }
+}
+
+@keyframes bounce31 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-12.1vw, 7vw);
+  }
+}
+@keyframes bounce32 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-12.1vw, -7vw);
+  }
+}
+
+/* Applying animations to the circles */
+.circle1.bounce11 {
+  animation: bounce11 4s infinite;
+}
+.circle1.bounce12 {
+  animation: bounce12 4s infinite;
+}
+.circle2.bounce21 {
+  animation: bounce21 4s infinite;
+}
+.circle2.bounce22 {
+  animation: bounce22 4s infinite;
+}
+.circle3.bounce31 {
+  animation: bounce31 4s infinite;
+}
+.circle3.bounce32 {
+  animation: bounce32 4s infinite;
+}
+
 .Home-top-left {
   display: flex;
   flex-direction: column;
