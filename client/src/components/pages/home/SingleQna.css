@@ -1,0 +1,7 @@
+.SingleQna-container {
+  display: flex;
+  flex-direction: column;
+}
+.SingleQna-a {
+  padding-left: 5vw;
+}
