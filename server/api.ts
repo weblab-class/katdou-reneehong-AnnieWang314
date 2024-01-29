@@ -31,7 +31,7 @@ router.post("/updateaboutme", (req, res) => {
   if (!req.user) {
     return res.status(401).send({ msg: "Not logged in" });
   }
-  const newAboutMe = req.body.aboutme;
+  const newAboutMe = req.body.aboutMe;
   UserModel.findOneAndUpdate(
     { googleid: req.user.googleid },
     { aboutme: newAboutMe },
@@ -39,6 +39,9 @@ router.post("/updateaboutme", (req, res) => {
     (err, doc) => {
       if (err) {
         return res.status(500).send({ msg: "Error updating aboutme" });
+      }
+      if (req.user) {
+        socketManager.getIo().emit("userAboutMeChanged", newAboutMe, req.user._id);
       }
       res.send(doc);
     }
@@ -57,6 +60,27 @@ router.post("/updatecolor", (req, res) => {
     (err, doc) => {
       if (err) {
         return res.status(500).send({ msg: "Error updating color" });
+      }
+      if (req.user) {
+        socketManager.getIo().emit("userColorChanged", newColor, req.user._id);
+      }
+      res.send(doc);
+    }
+  );
+});
+
+router.post("/updatedate", (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+  const newDate = req.body.date;
+  UserModel.findOneAndUpdate(
+    { googleid: req.user.googleid },
+    { date: newDate },
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        return res.status(500).send({ msg: "Error updating date" });
       }
       res.send(doc);
     }
@@ -79,6 +103,42 @@ router.get("/usercolor", (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({ msg: "Error fetching color", error: err });
+    });
+});
+
+router.get("/useraboutme", (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+  UserModel.findById(req.user._id)
+    .select("aboutme")
+    .then((user) => {
+      if (user) {
+        res.send({ aboutMe: user.aboutme });
+      } else {
+        res.status(404).send({ msg: "User not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ msg: "Error fetching color", error: err });
+    });
+});
+
+router.get("/userdate", (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+  UserModel.findById(req.user._id)
+    .select("date")
+    .then((user) => {
+      if (user) {
+        res.send({ date: user.date });
+      } else {
+        res.status(404).send({ msg: "User not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ msg: "Error fetching date", error: err });
     });
 });
 
