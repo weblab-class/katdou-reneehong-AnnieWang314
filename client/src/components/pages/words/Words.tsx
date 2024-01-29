@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { get } from "../../utilities";
-import Term from "../../../../shared/Term";
+import { get } from "../../../utilities";
+import Term from "../../../../../shared/Term";
 import "./Words.css";
-import Unauth from "./Unauth";
-import SingleWord from "../SingleWord";
+import Unauth from "../intermediate/Unauth";
+import SingleWord from "./SingleWord";
 
 type Props = {
   userId: string | undefined;

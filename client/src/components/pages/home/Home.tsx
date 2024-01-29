@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import homeLogoUrl from "../../assets/homeLogo.svg";
-import logoUrl from "../../assets/logo.svg";
+import logoUrl from "../../../assets/logo.svg";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";

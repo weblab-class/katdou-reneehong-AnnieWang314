@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { get, post } from "../utilities";
-import NotFound from "./pages/NotFound";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Words from "./pages/Words";
-import Learn from "./pages/Learn";
-import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
-import EditProfile from "./pages/EditProfile";
-import Active from "./pages/Active";
-import Loading from "./pages/Loading";
+import NotFound from "./pages/intermediate/NotFound";
+import Login from "./pages/login/Login";
+import Home from "./pages/home/Home";
+import Words from "./pages/words/Words";
+import Learn from "./pages/learn/Learn";
+import Profile from "./pages/profile/Profile";
+import Settings from "./pages/profile/Settings";
+import EditProfile from "./pages/profile/EditProfile";
+import Active from "./pages/learn/Active";
+import Loading from "./pages/intermediate/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -22,7 +22,7 @@ import {
   CredentialResponse,
 } from "@react-oauth/google";
 import Navbar from "./Navbar";
-import Unauth from "./pages/Unauth";
+import Unauth from "./pages/intermediate/Unauth";
 import "./App.css";
 //TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
 

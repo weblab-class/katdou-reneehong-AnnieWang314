@@ -8,7 +8,7 @@ import {
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import Profile from "./Profile";
 import "./Settings.css";
-import Unauth from "./Unauth";
+import Unauth from "../intermediate/Unauth";
 
 type Props = {
   userId: string | undefined;

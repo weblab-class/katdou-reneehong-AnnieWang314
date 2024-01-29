@@ -1,6 +1,6 @@
 import React from "react";
 import "./Learn.css";
-import Unauth from "./Unauth";
+import Unauth from "../intermediate/Unauth";
 
 type Props = {
   userId: string | undefined;

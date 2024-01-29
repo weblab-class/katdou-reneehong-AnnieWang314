@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Profile from "./Profile";
-import { post } from "../../utilities";
+import { post } from "../../../utilities";
 import "./EditProfile.css";
-import Unauth from "./Unauth";
+import Unauth from "../intermediate/Unauth";
 
 type Props = {
   userId: string | undefined;

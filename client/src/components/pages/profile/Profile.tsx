@@ -3,7 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
 import "./Profile.css";
-import Unauth from "./Unauth";
+import Unauth from "../intermediate/Unauth";
 
 type Props = {
   userName: string;
