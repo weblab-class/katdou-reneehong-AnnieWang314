@@ -48,6 +48,25 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    if (userId) {
+      // Fetch user color
+      get("/api/usercolor").then((response) => {
+        setColor(response.color);
+      });
+
+      // Fetch user about me
+      get("/api/useraboutme").then((response) => {
+        setAboutMe(response.aboutme);
+      });
+
+      // Existing socket connection code
+      socket.on("connect", () => {
+        post("/api/initsocket", { socketid: socket.id });
+      });
+    }
+  }, [userId]);
+
   const handleLogin = (credentialResponse: CredentialResponse) => {
     const userToken = credentialResponse.credential;
     const decodedCredential = jwt_decode(userToken as string) as { name: string; email: string };
@@ -88,7 +107,7 @@ const App = () => {
           <Route element={<Words userId={userId} />} path="/words" />
           <Route element={<Unauth />} path="/unauth" />
           <Route
-            element={<Profile userName="" userDate="" aboutMe="" userColor="" userId={userId} />}
+            element={<Profile userName="" userDate="" aboutMe={aboutMe} userColor={color} />}
             path="/profile"
           />
           <Route element={<Learn userId={userId} />} path="/learn" />
