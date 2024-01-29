@@ -107,7 +107,15 @@ const App = () => {
           <Route element={<Words userId={userId} />} path="/words" />
           <Route element={<Unauth />} path="/unauth" />
           <Route
-            element={<Profile userName="" userDate="" aboutMe={aboutMe} userColor={color} />}
+            element={
+              <Profile
+                userName=""
+                userDate=""
+                aboutMe={aboutMe}
+                userColor={color}
+                userId={userId}
+              />
+            }
             path="/profile"
           />
           <Route element={<Learn userId={userId} />} path="/learn" />

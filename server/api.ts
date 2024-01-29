@@ -82,24 +82,6 @@ router.get("/usercolor", (req, res) => {
     });
 });
 
-router.get("/useraboutme", (req, res) => {
-  if (!req.user) {
-    return res.status(401).send({ msg: "Not logged in" });
-  }
-
-  UserModel.findById(req.user._id)
-    .select("aboutme")
-    .then((user) => {
-      if (user) {
-        res.send({ aboutme: user.aboutme });
-      } else {
-        res.status(404).send({ msg: "User not found" });
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({ msg: "Error fetching about me", error: err });
-    });
-
 router.get("/terms", async (req, res) => {
   try {
     const terms = await TermModel.find().sort({ term: 1 });
