@@ -2,6 +2,7 @@ import express from "express";
 import auth from "./auth";
 import socketManager from "./server-socket";
 import UserModel from "./models/User";
+import TermModel from "./models/Term";
 const router = express.Router();
 
 router.post("/login", auth.login);
@@ -59,6 +60,15 @@ router.post("/updatecolor", (req, res) => {
       res.send(doc);
     }
   );
+});
+
+router.get("/terms", async (req, res) => {
+  try {
+    const terms = await TermModel.find().sort({ term: 1 });
+    res.json(terms);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 // anything else falls to this "not found" case

@@ -2,14 +2,14 @@ import { Schema, model, Document } from "mongoose";
 
 const TermSchema = new Schema({
   term: String,
-  definition: String,
+  meaning: String,
   example: String,
 });
 
 export interface Term extends Document {
-  term: String;
-  definition: String;
-  example: String;
+  term: string;
+  meaning: string;
+  example: string;
 }
 
 const TermModel = model<Term>("Term", TermSchema);
