@@ -1,9 +1,14 @@
 import React from "react";
+import "./NotFound.css";
 
 const NotFound = () => {
   return (
-    <div>
-      <h1>The page you are looking for is in another castle!</h1>
+    <div className="NotFound-container">
+      <h1>the page you are looking for does not exist</h1>
+      <div className="NotFound-bounce-container">
+        <div className="NotFound-bounce NF-circle1"></div>
+        <div className="NotFound-bounce NF-circle2"></div>
+      </div>
     </div>
   );
 };
