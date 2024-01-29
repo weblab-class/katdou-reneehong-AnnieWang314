@@ -14,6 +14,24 @@ type Props = {
 };
 const Profile = (props: Props) => {
   const { userName, userDate, aboutMe, userColor, userId } = props;
+  function formatDate(date) {
+    const d = new Date(date);
+    let month = "" + (d.getMonth() + 1); // Months are 0-based
+    let day = "" + d.getDate();
+    let year = d.getFullYear();
+
+    if (month.length < 2) {
+      month = "0" + month;
+    }
+    if (day.length < 2) {
+      day = "0" + day;
+    }
+
+    return [month, day, year].join("/");
+  }
+
+  const formattedUserDate = formatDate(userDate);
+
   if (!userId) {
     window.location.replace("/unauth");
     return <Unauth />;
@@ -26,7 +44,7 @@ const Profile = (props: Props) => {
         <div className="Profile-info">
           <div className="Profile-user">
             <div className="Profile-username">@{userName}</div>
-            <div className="Profile-joinDate">{userDate}</div>
+            <div className="Profile-joinDate">last seen {formattedUserDate}</div>
           </div>
           <div className="Profile-bio">{aboutMe}</div>
         </div>

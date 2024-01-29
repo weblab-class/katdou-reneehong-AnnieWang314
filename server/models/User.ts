@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   googleid: String,
   aboutme: { type: String, default: "" },
   color: { type: String, default: "#d5d1ff" },
-  date: String,
+  date: { type: Date, default: Date.now },
 });
 
 export interface User extends Document {

@@ -23,6 +23,11 @@
   margin-right: 30px;
 }
 
+.Settings-logOut-options {
+  display: flex;
+  flex-direction: row;
+}
+
 .Settings-logOut-yes {
   margin-right: 20px;
   color: var(--primary--dim);

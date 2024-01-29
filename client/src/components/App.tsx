@@ -28,9 +28,11 @@ import "./App.css";
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [userName, setUserName] = useState("");
   const [loading, setLoading] = useState(true);
   const [color, setColor] = useState("");
   const [aboutMe, setAboutMe] = useState("");
+  const [date, setDate] = useState("");
 
   useEffect(() => {
     get("/api/whoami")
@@ -38,6 +40,7 @@ const App = () => {
         if (user._id) {
           // They are registered in the database and currently logged in.
           setUserId(user._id);
+          setUserName(user.name);
         }
       })
       .then(() =>
@@ -50,21 +53,35 @@ const App = () => {
 
   useEffect(() => {
     if (userId) {
-      // Fetch user color
       get("/api/usercolor").then((response) => {
         setColor(response.color);
       });
 
-      // Fetch user about me
       get("/api/useraboutme").then((response) => {
-        setAboutMe(response.aboutme);
+        setAboutMe(response.aboutMe);
       });
 
-      // Existing socket connection code
+      get("/api/userdate").then((response) => {
+        setDate(response.date);
+      });
+
+      socket.on("userColorChanged", (newColor) => {
+        setColor(newColor);
+      });
+
+      socket.on("userAboutMeChanged", (newAboutMe) => {
+        setAboutMe(newAboutMe);
+      });
+
       socket.on("connect", () => {
         post("/api/initsocket", { socketid: socket.id });
       });
     }
+
+    return () => {
+      socket.off("userColorChanged");
+      socket.off("userAboutMeChanged");
+    };
   }, [userId]);
 
   const handleLogin = (credentialResponse: CredentialResponse) => {
@@ -75,12 +92,21 @@ const App = () => {
       setUserId(user._id);
       setColor(user.color);
       setAboutMe(user.aboutme);
+      setUserName(user.name);
       post("/api/initsocket", { socketid: socket.id });
     });
   };
 
   const handleLogout = () => {
     setUserId(undefined);
+    setUserName("");
+    post("/api/updatedate", { date: new Date().toISOString() })
+      .then(() => {
+        console.log("Date updated");
+      })
+      .catch((error) => {
+        console.error("Error updating date: ", error);
+      });
     post("/api/logout");
   };
 
@@ -107,12 +133,23 @@ const App = () => {
           <Route element={<Words userId={userId} />} path="/words" />
           <Route element={<Unauth />} path="/unauth" />
           <Route
-            element={<Profile userName="" userDate="" aboutMe={aboutMe} userColor={color} />}
+            element={
+              <Profile
+                userId={userId}
+                userName={userName}
+                userDate={date}
+                aboutMe={aboutMe}
+                userColor={color}
+              />
+            }
             path="/profile"
           />
           <Route element={<Learn userId={userId} />} path="/learn" />
           <Route element={<EditProfile userId={userId} />} path="/editprofile" />
-          <Route element={<Settings userId={userId} />} path="/settings" />
+          <Route
+            element={<Settings handleLogout={handleLogout} userId={userId} />}
+            path="/settings"
+          />
           <Route element={<Active userId={userId} />} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
