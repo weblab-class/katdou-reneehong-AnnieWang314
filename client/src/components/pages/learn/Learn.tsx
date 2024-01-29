@@ -1,36 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Learn.css";
-import Unauth from "../intermediate/Unauth";
+import { useNavigate, Link } from "react-router-dom";
 
 type Props = {
   userId: string | undefined;
 };
 
 const Learn = (props: Props) => {
-  if (!props.userId) {
-    window.location.replace("/unauth");
-    return <Unauth />;
-  }
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!props.userId) {
+      navigate("/unauth");
+    }
+  }, [props.userId, navigate]);
 
   return (
     <div className="Learn-container">
-      <div className="Learn-lib">
-        <div className="Learn-title">learn all words</div>
-        <div className="Learn-libraryWords">
-          <div className="Learn-libraryWord">fomo</div>
-          <div className="Learn-libraryWord">ngl</div>
-          <div className="Learn-libraryWord">goat</div>
-          <div className="Learn-libraryWord">iykyk</div>
-          <div className="Learn-libraryWord">hangry</div>
-          <div className="Learn-libraryWord">cringe</div>
-          <div className="Learn-libraryWord">spill the tea</div>
-          <div className="Learn-libraryWord">slid into the dms</div>
-          <div className="Learn-libraryWord">on fleek</div>
-          <div className="Learn-libraryWord">caught in 4k</div>
-          <div className="Learn-libraryWord">caught in 4k</div>
-          <div className="Learn-libraryWord">caught in 4k</div>
-          <div className="Learn-libraryWord">caught in 4k</div>
-          <div className="Learn-libraryWord">caught in 4k</div>
+      <div className="Learn-left">
+        <div className="Learn-title">ALL WORDS</div>
+        <div className="Learn-options-container">
+          <Link to="flashcards" className="Learn-option black-link">
+            flashcards
+          </Link>
+          <div className="Learn-option black-link">exercises</div>
         </div>
       </div>
       <div className="Learn-lib">

@@ -10,7 +10,7 @@ import Learn from "./pages/learn/Learn";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/profile/Settings";
 import EditProfile from "./pages/profile/EditProfile";
-import Active from "./pages/learn/Active";
+import Flashcards from "./pages/learn/Flashcards";
 import Loading from "./pages/intermediate/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
@@ -150,7 +150,7 @@ const App = () => {
             element={<Settings handleLogout={handleLogout} userId={userId} />}
             path="/settings"
           />
-          <Route element={<Active userId={userId} />} path="/learn/active" />
+          <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

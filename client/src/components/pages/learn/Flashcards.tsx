@@ -1,15 +1,19 @@
-import React from "react";
-import "./Active.css";
-import Unauth from "../intermediate/Unauth";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Flashcards.css";
 
 type Props = {
   userId: string | undefined;
 };
-const Active = (props: Props) => {
-  if (!props.userId) {
-    window.location.replace("/unauth");
-    return <Unauth />;
-  }
+const Flashcards = (props: Props) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!props.userId) {
+      navigate("/unauth");
+    }
+  }, [props.userId, navigate]);
+
   return (
     <div className="Active-container">
       <div className="Active-card">
@@ -28,4 +32,4 @@ const Active = (props: Props) => {
     </div>
   );
 };
-export default Active;
+export default Flashcards;
