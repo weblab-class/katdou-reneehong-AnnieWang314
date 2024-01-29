@@ -1,31 +1,49 @@
 .Words-container {
   display: flex;
-  padding-top: 8%;
+  padding-top: 60px;
   align-items: center;
+  justify-content: flex-start;
   flex-direction: column;
-  height: calc(100vh - 68px);
+  height: calc(100vh - 128px);
+  gap: 20px;
 }
-
 .Words-searchBar {
-  padding: 10px;
+  padding: 16px;
   margin: 8px 0;
   box-sizing: border-box;
-  width: 842px;
+  width: 60vw;
   height: 58px;
   border-radius: 20px;
-  fill: #f0eeff;
   border-color: #5d6adf;
   border-width: 2px;
   font-size: 25px;
-  color: #7e7e7e;
-  background-color: #d5d1ff;
+  color: black;
+  background-color: var(--light);
   font-family: "Roboto Serif", serif;
+}
+.Words-searchBar::placeholder {
+  color: #7e7e7e;
 }
 
 .Words-list-container {
   color: #5d6adf;
-  font-size: 28px;
-  height: 350px;
-  width: 842px;
+  font-size: 24px;
+  width: 60vw;
+  height: 54vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.Words-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   overflow: scroll;
+}
+.Words-word {
+  padding: 16px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #5d6adf;
+  border-width: 1px;
 }

@@ -5,7 +5,7 @@ import {
   googleLogout,
   CredentialResponse,
 } from "@react-oauth/google";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logoUrl from "../assets/logo.svg";
 import "./Navbar.css";
 
@@ -21,7 +21,6 @@ const Navbar = (props: Props) => {
     props.handleLogout();
     googleLogout();
     navigate("/login");
-    // window.location.replace("/login");
   };
 
   return (
@@ -37,15 +36,24 @@ const Navbar = (props: Props) => {
         </a>
         {props.userId ? (
           <>
-            <Link to="/words" className="black-link">
+            <NavLink
+              to="/words"
+              className={({ isActive }) => (isActive ? "active-link" : "black-link")}
+            >
               words
-            </Link>
-            <Link to="/learn" className="black-link">
+            </NavLink>
+            <NavLink
+              to="/learn"
+              className={({ isActive }) => (isActive ? "active-link" : "black-link")}
+            >
               learn
-            </Link>
-            <Link to="/profile" className="black-link">
+            </NavLink>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) => (isActive ? "active-link" : "black-link")}
+            >
               profile
-            </Link>
+            </NavLink>
             <div onClick={handleLogout} className="Navbar-start Navbar-logout u-openSans500">
               logout
             </div>

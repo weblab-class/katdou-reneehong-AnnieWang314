@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import Active from "./pages/Active";
+import Loading from "./pages/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -21,11 +22,13 @@ import {
   CredentialResponse,
 } from "@react-oauth/google";
 import Navbar from "./Navbar";
+import Unauth from "./pages/Unauth";
 import "./App.css";
 //TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
   const [color, setColor] = useState("");
   const [aboutMe, setAboutMe] = useState("");
 
@@ -41,7 +44,8 @@ const App = () => {
         socket.on("connect", () => {
           post("/api/initsocket", { socketid: socket.id });
         })
-      );
+      )
+      .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
@@ -80,6 +84,14 @@ const App = () => {
     post("/api/logout");
   };
 
+  if (loading) {
+    return (
+      <div className="App-container">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <div className="App-container">
       <BrowserRouter>
@@ -92,15 +104,16 @@ const App = () => {
             }
             path="/login"
           />
-          <Route element={<Words />} path="/words" />
+          <Route element={<Words userId={userId} />} path="/words" />
+          <Route element={<Unauth />} path="/unauth" />
           <Route
             element={<Profile userName="" userDate="" aboutMe={aboutMe} userColor={color} />}
             path="/profile"
           />
-          <Route element={<Learn />} path="/learn" />
-          <Route element={<EditProfile />} path="/editprofile" />
-          <Route element={<Settings />} path="/settings" />
-          <Route element={<Active />} path="/learn/active" />
+          <Route element={<Learn userId={userId} />} path="/learn" />
+          <Route element={<EditProfile userId={userId} />} path="/editprofile" />
+          <Route element={<Settings userId={userId} />} path="/settings" />
+          <Route element={<Active userId={userId} />} path="/learn/active" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

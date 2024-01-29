@@ -1,31 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { get } from "../../utilities";
+import Term from "../../../../shared/Term";
 import "./Words.css";
+import Unauth from "./Unauth";
+import SingleWord from "../SingleWord";
 
-const Words = () => {
+type Props = {
+  userId: string | undefined;
+};
+
+const Words = (props: Props) => {
+  const navigate = useNavigate();
+  const [words, setWords] = useState<Term[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    if (!props.userId) {
+      navigate("/unauth");
+    }
+  }, [props.userId, navigate]);
+
+  useEffect(() => {
+    get("/api/terms")
+      .then((data) => {
+        setWords(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value.toLowerCase());
+  };
+
+  const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+  };
+
+  const filteredWords = words.filter((word) => word.term.toLowerCase().startsWith(searchQuery));
+
   return (
     <div className="Words-container">
-      <div className="Words-searchBar-container">
-        {" "}
-        {/* Note: class -> className */}
-        <form action="/search" method="get">
-          <input
-            className="Words-searchBar"
-            type="text"
-            name="query"
-            placeholder="find your words..."
-          />
-        </form>
-      </div>
+      <form
+        action="/search"
+        method="get"
+        className="Words-searchBar-container"
+        onSubmit={handleFormSubmit}
+      >
+        <input
+          className="Words-searchBar"
+          type="text"
+          name="query"
+          placeholder="find your words..."
+          onChange={handleSearchChange}
+          autoComplete="off"
+        />
+      </form>
 
       <div className="Words-list-container">
-        <div className="Words-listTitle">hot and trending</div>
         <div className="Words-list">
-          <div className="Words-word">lit: describes something fun and exciting</div>
-          <div className="Words-word">shook: to be surprised or shocked</div>
-          <div className="Words-word">lowkey: being discreet</div>
-          <div className="Words-word">woke: being aware of various societal issues</div>
-          <div className="Words-word">basic: boring, average, or unoriginal</div>
-          <div className="Words-word">savage: describes something badass</div>
+          {filteredWords.map((word) => (
+            <SingleWord key={word._id} term={word.term} meaning={word.meaning} />
+          ))}
         </div>
       </div>
     </div>

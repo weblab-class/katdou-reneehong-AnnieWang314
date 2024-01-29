@@ -46,10 +46,6 @@ body {
   font-size: 20px;
 }
 
-form {
-  flex-grow: 1;
-}
-
 h1 {
   font-size: 48px;
   font-weight: 500;
@@ -68,10 +64,18 @@ h2 {
   text-decoration: none;
 }
 
+.black-link:hover{
+  color: var(--primary--dim);
+}
+
 .purple-link:link,
 .purple-link:visited {
   color: var(--primary--dim);
   text-decoration: none;
+}
+
+.purple-link:hover{
+  color: var(--black);
 }
 
 .u-openSans300 {
