@@ -20,10 +20,14 @@ mongoose
 
     const jsonFilePath = path.resolve(__dirname, "./terms.json");
 
-    fs.promises
-      .readFile(jsonFilePath, "utf8")
+    TermModel.deleteMany({})
+      .then(() => {
+        console.log("Deleted all existing terms");
+
+        return fs.promises.readFile(jsonFilePath, "utf8");
+      })
       .then(async (data) => {
-        const terms: Term[] = JSON.parse(data);
+        const terms: Term[] = JSON.parse(data.toLowerCase());
 
         try {
           await TermModel.insertMany(terms);

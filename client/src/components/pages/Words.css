@@ -17,9 +17,12 @@
   border-color: #5d6adf;
   border-width: 2px;
   font-size: 25px;
-  color: #7e7e7e;
+  color: black;
   background-color: var(--light);
   font-family: "Roboto Serif", serif;
+}
+.Words-searchBar::placeholder {
+  color: #7e7e7e;
 }
 
 .Words-list-container {

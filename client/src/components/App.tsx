@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import Active from "./pages/Active";
+import Loading from "./pages/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import "../utilities.css";
@@ -27,6 +28,7 @@ import "./App.css";
 
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
   const [color, setColor] = useState("");
   const [aboutMe, setAboutMe] = useState("");
 
@@ -42,7 +44,8 @@ const App = () => {
         socket.on("connect", () => {
           post("/api/initsocket", { socketid: socket.id });
         })
-      );
+      )
+      .finally(() => setLoading(false));
   }, []);
 
   const handleLogin = (credentialResponse: CredentialResponse) => {
@@ -61,6 +64,14 @@ const App = () => {
     setUserId(undefined);
     post("/api/logout");
   };
+
+  if (loading) {
+    return (
+      <div className="App-container">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <div className="App-container">

@@ -1,67 +1,247 @@
 [
   {
-    "term": "bruh",
-    "definition": "expression of bruhism",
-    "example": "bruh what are you saying"
+    "term": "Asl",
+    "meaning": "Shortened version of \"as hell.\" Unrelated to early internet slang, \"age/sex/location.\"",
+    "example": "\"Your shirt looks cool asl.\""
   },
   {
-    "term": "mommy",
-    "definition": "expression of endearment, usually towards women",
-    "example": "i love my mommy... renee is mommy"
+    "term": "Based",
+    "meaning": "Originally meaning \"to be yourself and not care about how others view you\", the word is now used to indicate an opinion or something that someone agrees with. It is especially common in political slang and discussions and may be used for controversial topics.",
+    "example": "\"Your opinion is based.\""
   },
   {
-    "term": "ate",
-    "definition": "succeeded without flaws",
-    "example": "she really ate that up"
+    "term": "Beat your face",
+    "meaning": "To apply makeup to the face. Note that this is also slang in the US Army, meaning \"do push-ups.\"",
+    "example": "\"I'm almost ready for my date night, just have to beat my face real quick.\""
   },
   {
-    "term": "left no crumbs",
-    "definition": "destroyed the task, accomplished goals",
-    "example": "kat dou left no crumbs"
+    "term": "Bestie",
+    "meaning": "Short for \"best friend\". Sometimes used jokingly with someone one does not have any relationship to.",
+    "example": "\"You are my number one bestie.\""
   },
   {
-    "term": "lol",
-    "definition": "stands for laugh out loud",
-    "example": "renee always texts lol"
+    "term": "Bet",
+    "meaning": "Yes, okay, \"it's on.\"",
+    "example": "\"You want to get ice cream after school? Bet.\""
   },
   {
-    "term": "hehehawhaw",
-    "definition": "weird expression that weird people use",
-    "example": "hehehehehehawhawhawhaw"
+    "term": "Big yikes",
+    "meaning": "Used to describe something embarrassing or cringey, particularly in response to an offensive comment.",
+    "example": "\"Wow, when he failed that stunt, that was a big yikes.\""
   },
   {
-    "term": "omg",
-    "definition": "stands for oh my god, demonstrates surprise",
-    "example": "omg there is a snow day"
+    "term": "Body count",
+    "meaning": "A euphemism for how many people one has had sex with.",
+    "example": "\"I heard her body count was over 20.\""
   },
   {
-    "term": "boi",
-    "definition": "like bruh",
-    "example": "boi what are you doing"
+    "term": "Boujee",
+    "meaning": "A high-class/materialistic person.",
+    "example": "\"You must live in a castle since you're acting like a boujee.\""
   },
   {
-    "term": "swiftie",
-    "definition": "a fan of taylor swift",
-    "example": "we are the biggest swifties alive"
+    "term": "Bussin'",
+    "meaning": "Extremely good, excellent. Also used to describe good food.",
+    "example": "\"This salad is bussin.\""
   },
   {
-    "term": "piss",
-    "definition": "pee",
-    "example": "he took a fat piss"
+    "term": "Clapback",
+    "meaning": "Swift and witty response to an insult or critique.",
+    "example": "\"He was being mocked, so he clapped back and made the whole room go quiet.\""
   },
   {
-    "term": "fam",
-    "definition": "an expression you use with friends, stands for family",
-    "example": "what's up fam"
+    "term": "Dab",
+    "meaning": "A dance move used as a gesture of triumph.",
+    "example": "\"He dabbed on the haters.\""
   },
   {
-    "term": "it's giving",
-    "definition": "describes the connotation",
-    "example": "i don't like his mustache. it's giving dumb."
+    "term": "Dank",
+    "meaning": "Used to describe an ironic internet meme.",
+    "example": "\"I like dank memes.\""
   },
   {
-    "term": "period",
-    "definition": "emphasis on a subject",
-    "example": "period he sucks"
+    "term": "Drip",
+    "meaning": "Trendy high-class fashion.",
+    "example": "\"Cool drip, where'd you buy it?"
+  },
+  {
+    "term": "Glow-up",
+    "meaning": "A major improvement in one's self, usually an improvement in appearance, confidence, and style. Frequently used in a context relating to puberty.",
+    "example": "\"Their glow-up over the summer was insane.\""
+  },
+  {
+    "term": "G.O.A.T.",
+    "meaning": "Abbreviation for Greatest Of All Time.",
+    "example": "\"You're the GOAT.\""
+  },
+  {
+    "term": "Gyatt",
+    "meaning": "Short for \"God Damn\".",
+    "example": "\"Did you see her latest post? Gyatt!\""
+  },
+  {
+    "term": "Hits different",
+    "meaning": "Something that is better in a peculiar manner.",
+    "example": "\"Sprite from McDonald's just hits different.\""
+  },
+  {
+    "term": "IJBOL",
+    "meaning": "An acronym for the phrase \"I just burst out laughing\", a version of \"lmao\".",
+    "example": "\"You're hilarious, IJBOL.\""
+  },
+  {
+    "term": "I oop",
+    "meaning": "Used to express shock, embarrassment, and or amusement.",
+    "example": "\"Did she just fall? I oop.\""
+  },
+  {
+    "term": "It's giving",
+    "meaning": "Describe the attitude or connotation of something or someone.",
+    "example": "\"It's giving yuck.\""
+  },
+  {
+    "term": "Iykyk",
+    "meaning": "Acronym for \"If you know, you know.\" Used to describe inside jokes.",
+    "example": "\"I'm not saying this, but well....iykyk.\""
+  },
+  {
+    "term": "Let him cook",
+    "meaning": "Give one space to proceed uninterrupted (especially when saying or doing something provocative) in the hope that the result might be entertaining, if not agreeable.",
+    "example": "\"Hold on, let him cook.\""
+  },
+  {
+    "term": "Lit",
+    "meaning": "Colloquially: \"Enlightened\", \"Hot\", \"Fire.\" The new hotness; something remarkable, interesting, fun or amusing. Generally positive.",
+    "example": "\"That party was lit!\""
+  },
+  {
+    "term": "Moots",
+    "meaning": "Short for \"mutuals\" or \"mutual followers\".",
+    "example": "\"I only let my moots reply to my posts.\""
+  },
+  {
+    "term": "Cap",
+    "meaning": "To lie. Specifically, saying someone is \"capping\" or \"cap\" means to say they are lying. On the other hand, if someone says \"no cap\", it means they aren't lying.",
+    "example": "\"I\u2019m actually going to be productive today, no cap.\"\n\"You actually got tickets to the Bad Bunny concert? You\u2019re capping.\""
+  },
+  {
+    "term": "NPC",
+    "meaning": "Someone who cannot think for themselves and/or has no or little control over their own life, is ready to agree with popular opinion unquestioningly, and always believes what they are told; someone who acts robotic.",
+    "example": "\"He's such an NPC. He has no personality.\""
+  },
+  {
+    "term": "OK Boomer",
+    "meaning": "Pejorative directed toward members of the \"Baby Boomer\" generation, used to dismiss or mock attitudes typically associated with baby boomers as out of date.",
+    "example": "\"You think climate change doesn't exist? OK Boomer.\""
+  },
+  {
+    "term": "Opp",
+    "meaning": "Short for opposition or enemies; describes an individual's opponents.",
+    "example": "\"I have to be careful, my opps are over there.\""
+  },
+  {
+    "term": "Out of pocket",
+    "meaning": "To be crazy, wild, or extreme, sometimes to an extent which is considered too far.",
+    "example": "\"That comment was out of pocket.\""
+  },
+  {
+    "term": "Period",
+    "meaning": "Used to add emphasis to a subject; placed at the end of a sentence, as with a period. Similar to the British term \"full stop\".",
+    "example": "\"You were awesome out there, period.\""
+  },
+  {
+    "term": "Pluh",
+    "meaning": "Used as a conversation stopper when there is nothing left to say",
+    "example": "Person 1:\"Soo...uhhh, yeah\"\nPerson 2: \"Pluh\" \n(walks away)"
+  },
+  {
+    "term": "Ratio",
+    "meaning": "When a reply, particularly on Twitter or TikTok, has better reception and more likes than the original post being replied to.",
+    "example": "\"That ratio was crazy!\""
+  },
+  {
+    "term": "Rizz",
+    "meaning": "One's charm/seduction skills",
+    "example": "\"He has all the rizz, he gets every girl\""
+  },
+  {
+    "term": "Sheesh",
+    "meaning": "To praise someone when they are doing something good. The vowels are often emphasized.",
+    "example": "\"Sheesh, those shoes are stylish.\""
+  },
+  {
+    "term": "Shook",
+    "meaning": "To be shocked, surprised, or bothered.",
+    "example": "\"I am shook after that.\""
+  },
+  {
+    "term": "Simp",
+    "meaning": "Sycophancy, being overly affectionate in pursuit of a sexual relationship.",
+    "example": "\"Stop simping for that girl, she doesn't even know you.\""
+  },
+  {
+    "term": "Situationship",
+    "meaning": "Refers to an ambiguous romantic relationship where all parties have mutual feelings for one another, but said feelings are not clearly defined; a mid-point between dating and not dating.",
+    "example": "\"I don't really know if he likes me or not, so for now it's a situationship.\""
+  },
+  {
+    "term": "Sksksk",
+    "meaning": "Used to convey happiness/laughter.",
+    "example": "\"OMG that's so funny sksksksk.\""
+  },
+  {
+    "term": "Slaps",
+    "meaning": "Used to refer to something that is perceived to be good, particularly used when referring to music.",
+    "example": "\"This song slaps.\""
+  },
+  {
+    "term": "Slay",
+    "meaning": "To do something well.",
+    "example": "\"She slayed in her new album.\""
+  },
+  {
+    "term": "Soft-launch",
+    "meaning": "To imply being in a relationship in a discreet manner on social media. Used when said relationship is not official and could easily be severed.",
+    "example": "\"We're still testing the waters, so right now it's a soft launch.\""
+  },
+  {
+    "term": "Stan",
+    "meaning": "Supporting something. Specifically used in cases of overzealous or obsessive support of celebrities.",
+    "example": "\"Do you stan Taylor Swift?\""
+  },
+  {
+    "term": "Sus",
+    "meaning": "Short term for suspect/suspicious.",
+    "example": "\"You're acting pretty sus.\""
+  },
+  {
+    "term": "Tea",
+    "meaning": "Gossiping (spilling the tea).",
+    "example": "\"So, what's the tea?\""
+  },
+  {
+    "term": "Understood the assignment",
+    "meaning": "To understand what was supposed to be done; to do something well.",
+    "example": "\"When he got up on stage, he understood the assignment.\""
+  },
+  {
+    "term": "Vibe check",
+    "meaning": "To check one's personality or attitude.",
+    "example": "\"You need a vibe check.\""
+  },
+  {
+    "term": "Wig",
+    "meaning": "To do something so well as to \"make one's wig fly off.\" Unrelated to wig out.",
+    "example": "\"You always wig whenever you write a song.\""
+  },
+  {
+    "term": "Yap",
+    "meaning": "To talk too much; To say many words without the words meaning anything",
+    "example": "Person 1:\"So I just need a Petroleum Tank, and lighter fluid to construct...\"\nPerson 2 \"Quit yapping\""
+  },
+  {
+    "term": "Yeet",
+    "meaning": "To throw something with force and without regard. Also used as a generic positive exclamation.",
+    "example": "\"He yeeted that pencil across the classroom!\""
   }
 ]
