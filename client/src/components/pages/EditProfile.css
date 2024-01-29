@@ -48,9 +48,19 @@
   padding: 5px;
 }
 
-.EditProfile-backButton {
-  margin: 20px;
+.EditProfile-submitButton {
   display: flex;
-  font-size: 25px;
+  font-size: 23px;
   color: #5d6adf;
+  background-color: var(--primary);
+  font-family: "Roboto", serif;
+  border: none;
+  margin-left: 15px;
+}
+
+.EditProfile-backButton {
+  margin-top: 20px;
+  display: flex;
+  font-size: 23px;
+  color: #4f4b54;
 }

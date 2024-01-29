@@ -11,9 +11,11 @@ type Props = {
   aboutMe: string;
   userColor: string;
   userId: string | undefined;
+  wordsCompleted: string[];
+  totalWordCount: number;
 };
 const Profile = (props: Props) => {
-  const { userName, userDate, aboutMe, userColor, userId } = props;
+  const { userName, userDate, aboutMe, userColor, userId, wordsCompleted, totalWordCount } = props;
   function formatDate(date) {
     const d = new Date(date);
     let month = "" + (d.getMonth() + 1); // Months are 0-based
@@ -63,9 +65,14 @@ const Profile = (props: Props) => {
 
       <div className="Profile-progress-container">
         <div className="Profile-progress">
-          <div className="Profile-progress-bar" style={{ width: "20%" }}></div>
+          <div
+            className="Profile-progress-bar"
+            style={{ width: `${(wordsCompleted.length / totalWordCount) * 100}%` }}
+          ></div>
         </div>
-        <div className="Profile-wordCount">100/500 words completed</div>
+        <div className="Profile-wordCount">
+          {wordsCompleted.length}/{totalWordCount} words completed
+        </div>
       </div>
     </div>
   );
