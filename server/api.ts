@@ -25,6 +25,7 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
 router.post("/updateaboutme", (req, res) => {
   if (!req.user) {
     return res.status(401).send({ msg: "Not logged in" });
@@ -59,6 +60,44 @@ router.post("/updatecolor", (req, res) => {
       res.send(doc);
     }
   );
+});
+
+router.get("/usercolor", (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  UserModel.findById(req.user._id)
+    .select("color")
+    .then((user) => {
+      if (user) {
+        res.send({ color: user.color });
+      } else {
+        res.status(404).send({ msg: "User not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ msg: "Error fetching color", error: err });
+    });
+});
+
+router.get("/useraboutme", (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  UserModel.findById(req.user._id)
+    .select("aboutme")
+    .then((user) => {
+      if (user) {
+        res.send({ aboutme: user.aboutme });
+      } else {
+        res.status(404).send({ msg: "User not found" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({ msg: "Error fetching about me", error: err });
+    });
 });
 
 // anything else falls to this "not found" case
