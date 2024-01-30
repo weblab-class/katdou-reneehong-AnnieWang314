@@ -150,6 +150,8 @@ const App = () => {
                 userDate={date}
                 aboutMe={aboutMe}
                 userColor={color}
+                wordsCompleted={["hi", "hello", "yipee"]}
+                totalWordCount={4}
               />
             }
             path="/profile"

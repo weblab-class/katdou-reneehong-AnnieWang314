@@ -74,6 +74,7 @@ const EditProfile = (props: Props) => {
             placeholder="write text here..."
           />
         </div>
+
         <button type="submit" className="EditProfile-submitButton">
           save changes
         </button>
