@@ -7,7 +7,25 @@
   padding-bottom: 100px;
 }
 
+.Flashcards-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.Flashcards-middle-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Flashcards-start-over:hover {
+  cursor: pointer;
+}
+
 .Flashcards-button-nav {
+  visibility: hidden;
   display: flex;
   background-color: var(--primary--dim);
   padding: var(--m) var(--l);
@@ -22,6 +40,6 @@
   cursor: pointer;
 }
 
-.hidden {
-  visibility: hidden;
+.Flashcards-button-nav.visible {
+  visibility: visible;
 }

@@ -10,8 +10,15 @@ type Props = {
 };
 
 const Flashcards = (props: Props) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [shuffledTerms, setShuffledTerms] = useState<Term[]>([]);
+  const [currentIndex, setCurrentIndex] = useState<number>(() => {
+    const savedIndex = localStorage.getItem("currentIndex");
+    return savedIndex ? parseInt(savedIndex, 10) : 0;
+  });
+  const [shuffledTerms, setShuffledTerms] = useState<Term[]>(() => {
+    const savedTerms = localStorage.getItem("shuffledTerms");
+    return savedTerms ? JSON.parse(savedTerms) : [];
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,7 +39,12 @@ const Flashcards = (props: Props) => {
       };
       setShuffledTerms(shuffleTerms(props.words));
     }
-  }, [props.words]);
+  }, [props.words, shuffledTerms.length]);
+
+  useEffect(() => {
+    localStorage.setItem("currentIndex", currentIndex.toString());
+    localStorage.setItem("shuffledTerms", JSON.stringify(shuffledTerms));
+  }, [currentIndex, shuffledTerms]);
 
   const handleNextTerm = () => {
     setCurrentIndex((prevIndex) => {
@@ -54,25 +66,42 @@ const Flashcards = (props: Props) => {
     });
   };
 
+  const startOver = () => {
+    localStorage.removeItem("currentIndex");
+    localStorage.removeItem("shuffledTerms");
+    setCurrentIndex(0);
+    setShuffledTerms([]);
+  };
+
   return (
     <div className="Flashcards-container">
       <div
         onClick={handlePrevTerm}
-        className={`Flashcards-button-nav ${currentIndex === 0 ? "hidden" : ""}`}
+        className={`Flashcards-button-nav ${currentIndex > 0 ? "visible" : ""}`}
       >
         back
       </div>
-      {shuffledTerms.length > 0 && (
-        <SingleFlashcard
-          key={shuffledTerms[currentIndex]._id}
-          term={shuffledTerms[currentIndex].term}
-          meaning={shuffledTerms[currentIndex].meaning}
-          example={shuffledTerms[currentIndex].example}
-        />
-      )}
+      <div className="Flashcards-middle">
+        <div className="Flashcards-middle-top">
+          <div>
+            {currentIndex + 1} / {shuffledTerms.length}
+          </div>
+          <div onClick={startOver} className="Flashcards-start-over black-link">
+            Start Over
+          </div>
+        </div>
+        {shuffledTerms.length > 0 && (
+          <SingleFlashcard
+            key={shuffledTerms[currentIndex]._id}
+            term={shuffledTerms[currentIndex].term}
+            meaning={shuffledTerms[currentIndex].meaning}
+            example={shuffledTerms[currentIndex].example}
+          />
+        )}
+      </div>
       <div
         onClick={handleNextTerm}
-        className={`Flashcards-button-nav ${currentIndex === shuffledTerms.length - 1 ? "hidden" : ""}`}
+        className={`Flashcards-button-nav ${currentIndex < shuffledTerms.length - 1 ? "visible" : ""}`}
       >
         next
       </div>
