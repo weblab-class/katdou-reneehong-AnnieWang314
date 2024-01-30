@@ -29,6 +29,8 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
 
+console.log(process.env.MONGO_SRV);
+
 // Create a new Express server
 const app = express();
 
