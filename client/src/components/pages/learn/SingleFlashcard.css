@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--light);
-  padding: 40px;
+  padding: 30px;
   height: 40vh;
   min-height: 200px;
   width: 30vw;
@@ -18,12 +18,22 @@
   overflow: hidden;
 }
 .SingleFlashcard-content {
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 5px;
+  overflow: auto;
   display: flex;
-  height: 100%;
   color: var(--primary--dim);
   font-size: calc(0.5vw + 20px);
   text-align: center;
-  overflow: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-wrap: wrap;
+  /* overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto; */
 }
 
 .SingleFlashcard-buttons {

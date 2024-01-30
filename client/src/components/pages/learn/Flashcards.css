@@ -18,5 +18,10 @@
 }
 
 .Flashcards-button-nav:hover {
-  background-color: #6673e5;
+  background-color: var(--mid--purple);
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
 }

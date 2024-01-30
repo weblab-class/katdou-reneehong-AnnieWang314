@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./SingleFlashcard.css";
 
 type Props = {
@@ -10,25 +10,9 @@ type Props = {
 const SingleFlashcard = (props: Props) => {
   const [display, setDisplay] = useState(props.term);
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const checkForOverflow = (): boolean => {
-    const container = containerRef.current;
-    if (container) {
-      return (
-        container.scrollHeight > container.clientHeight ||
-        container.scrollWidth > container.clientWidth
-      );
-    }
-    return false;
-  };
-
   useEffect(() => {
-    const container = containerRef.current;
-    if (container) {
-      const isOverflowing = checkForOverflow();
-      container.style.alignItems = isOverflowing ? "flex-start" : "center";
-    }
-  });
+    setDisplay(props.term);
+  }, [props.term]);
 
   const handleWordClick = () => {
     setDisplay(props.term);
@@ -45,9 +29,7 @@ const SingleFlashcard = (props: Props) => {
   return (
     <div className="SingleFlashcard-container">
       <div className="SingleFlashcard-card">
-        <div ref={containerRef} className="SingleFlashcard-content">
-          {display}
-        </div>
+        <div className="SingleFlashcard-content">{display}</div>
       </div>
       <div className="SingleFlashcard-buttons">
         <div onClick={handleWordClick} className="SingleFlashcard-button black-link">
