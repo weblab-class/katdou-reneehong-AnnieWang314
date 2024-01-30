@@ -1,10 +1,10 @@
 .Words-container {
   display: flex;
-  padding-top: 60px;
+  padding: 60px;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  height: calc(100vh - 128px);
+  min-height: calc(100vh - 188px);
   gap: 20px;
 }
 .Words-searchBar {
@@ -30,6 +30,7 @@
   font-size: 24px;
   width: 60vw;
   height: 54vh;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   gap: 24px;

@@ -42,13 +42,13 @@ const Home = () => {
           </div>
           <div className="Home-top-right">
             <h1>stay connected!</h1>
-            <div>ur path to learning the newest, gen-z language.</div>
-            <div>
+            <div>ur path to learning the newest, gen-z language (pg-13 edition).</div>
+            {/* <div>
               have an account?{" "}
               <Link to="/login" className="Home-login purple-link">
                 log in.
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         <a href="/#about" className="purple-link">

@@ -1,81 +1,22 @@
-.Active-container {
-    display: flex;
-    flex-direction: column;
-    background-color: primary;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
-  
-  .Active-button-group {
-    display:flex;
-    justify-content: center;
-    margin-top: 1%;
-    margin-left: 50%;
-    margin-right: 50%;
-  }
-  
-  .Active-all-buttons {
-    display: flex;
-    margin: 0% 50%;
-    justify-content: center;
+.Flashcards-container {
+  min-height: calc(100vh - 218px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
 
-  }
-  
-  .Active-card {
-    background-color: #F0EEFF;
-    color: #AAA8FF;
-    font-family: 'Roboto Serif', serif;
-    box-sizing: border-box;
-    padding: 12% 15%;
-    max-width: 100%;
-    max-height: 100%;
-    text-align: center;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: -75px;
-  
-  }
-  
-  
-  .Active-cardtext {
-    text-align: center;
-    font-size: 30px
-  }
-  
-  .Active-button {
-    display: flex;
-    background-color: #888EF2; 
-    padding: 6%;
-    margin: 7%; 
-    border-radius: 100px;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto Serif', serif;
-    color: #F0EEFF;
-  
-  }
-  .Active-button-nav {
-    display: flex;
-    background-color: #AAA8FF; 
-    padding: 6%;
-    margin: 7%; 
-    border-radius: 100px;
-    align-items: center;
-    font-family: 'Roboto Serif', serif;
-    color: #F0EEFF;
-  }
-  
-  .Active-button:hover {
-    background-color: #6673E5; 
-  }
+.Flashcards-button-nav {
+  display: flex;
+  background-color: var(--primary--dim);
+  padding: var(--m) var(--l);
+  margin: 5vw;
+  border-radius: 30px;
+  align-items: center;
+  color: var(--light);
+}
 
-  .Active-button-nav:hover {
-    background-color: #6673E5; 
-  }
-  
+.Flashcards-button-nav:hover {
+  background-color: #6673e5;
+}

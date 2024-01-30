@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SingleFlashcard from "./SingleFlashcard";
+import Term from "../../../../../shared/Term";
 import "./Flashcards.css";
 
 type Props = {
   userId: string | undefined;
+  words: Term[];
 };
+
 const Flashcards = (props: Props) => {
   const navigate = useNavigate();
 
@@ -15,20 +19,14 @@ const Flashcards = (props: Props) => {
   }, [props.userId, navigate]);
 
   return (
-    <div className="Active-container">
-      <div className="Active-card">
-        <div className="Active-cardtext"> learn bitch</div>
-      </div>
-      <div className="Active-all-buttons">
-        <div className="Active-button-nav"> back</div>
-        <div className="Active-button-group">
-          <div className="Active-button"> word </div>
-          <div className="Active-button"> definition </div>
-          <div className="Active-button"> origin</div>
-          <div className="Active-button"> example</div>
-        </div>
-        <div className="Active-button-nav"> next</div>
-      </div>
+    <div className="Flashcards-container">
+      <div className="Flashcards-button-nav">back</div>
+      <SingleFlashcard
+        term="based"
+        meaning="originally meaning 'to be yourself and not care about how EEEEEE OIAJFOIAEJOFIJAEOIF JAOEIFJOAE IJFEOAIJFOIAEFJ others view you', the word is now used to indicate an opinion or something that someone agrees with. it is especially common in political slang and discussions and may be used for controversial topics."
+        example="i am based."
+      />
+      <div className="Flashcards-button-nav">next</div>
     </div>
   );
 };

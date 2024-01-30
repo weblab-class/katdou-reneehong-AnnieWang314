@@ -41,13 +41,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", serif;
+  font-family: "Roboto serif", serif;
   font-weight: 300;
   font-size: 20px;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 500;
   margin: 0;
 }
@@ -64,7 +64,7 @@ h2 {
   text-decoration: none;
 }
 
-.black-link:hover{
+.black-link:hover {
   color: var(--primary--dim);
 }
 
@@ -74,7 +74,7 @@ h2 {
   text-decoration: none;
 }
 
-.purple-link:hover{
+.purple-link:hover {
   color: var(--black);
 }
 

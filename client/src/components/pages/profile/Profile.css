@@ -1,7 +1,7 @@
 .Profile-container {
   display: flex;
   flex-direction: column;
-  height: calc(70vh - 68px);
+  min-height: calc(64vh - 68px);
   padding: 10vh 20vw 20vh 20vw;
   gap: 3vh;
 }

@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { get } from "../../../utilities";
 import Term from "../../../../../shared/Term";
 import "./Words.css";
-import Unauth from "../intermediate/Unauth";
 import SingleWord from "./SingleWord";
 
 type Props = {
   userId: string | undefined;
+  words: Term[];
 };
 
 const Words = (props: Props) => {
   const navigate = useNavigate();
-  const [words, setWords] = useState<Term[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -20,14 +18,6 @@ const Words = (props: Props) => {
       navigate("/unauth");
     }
   }, [props.userId, navigate]);
-
-  useEffect(() => {
-    get("/api/terms")
-      .then((data) => {
-        setWords(data);
-      })
-      .catch((error) => console.error(error));
-  }, []);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(event.target.value.toLowerCase());
@@ -37,7 +27,9 @@ const Words = (props: Props) => {
     event.preventDefault();
   };
 
-  const filteredWords = words.filter((word) => word.term.toLowerCase().startsWith(searchQuery));
+  const filteredWords = props.words.filter((word) =>
+    word.term.toLowerCase().startsWith(searchQuery)
+  );
 
   return (
     <div className="Words-container">

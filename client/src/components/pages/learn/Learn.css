@@ -1,5 +1,5 @@
 .Learn-container {
-  height: calc(84vh - 148px);
+  min-height: calc(84vh - 148px);
   display: flex;
   gap: 8vw;
   justify-content: center;
