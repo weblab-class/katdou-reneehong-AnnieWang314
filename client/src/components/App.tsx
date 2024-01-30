@@ -10,10 +10,11 @@ import Learn from "./pages/learn/Learn";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/profile/Settings";
 import EditProfile from "./pages/profile/EditProfile";
-import Active from "./pages/learn/Active";
+import Flashcards from "./pages/learn/Flashcards";
 import Loading from "./pages/intermediate/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
+import Term from "../../../shared/Term";
 import "../utilities.css";
 import {
   GoogleOAuthProvider,
@@ -33,6 +34,7 @@ const App = () => {
   const [color, setColor] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [date, setDate] = useState("");
+  const [words, setWords] = useState<Term[]>([]);
 
   useEffect(() => {
     get("/api/whoami")
@@ -84,6 +86,14 @@ const App = () => {
     };
   }, [userId]);
 
+  useEffect(() => {
+    get("/api/terms")
+      .then((data) => {
+        setWords(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
   const handleLogin = (credentialResponse: CredentialResponse) => {
     const userToken = credentialResponse.credential;
     const decodedCredential = jwt_decode(userToken as string) as { name: string; email: string };
@@ -130,7 +140,7 @@ const App = () => {
             }
             path="/login"
           />
-          <Route element={<Words userId={userId} />} path="/words" />
+          <Route element={<Words words={words} userId={userId} />} path="/words" />
           <Route element={<Unauth />} path="/unauth" />
           <Route
             element={
@@ -152,7 +162,7 @@ const App = () => {
             element={<Settings handleLogout={handleLogout} userId={userId} />}
             path="/settings"
           />
-          <Route element={<Active userId={userId} />} path="/learn/active" />
+          <Route element={<Flashcards words={words} userId={userId} />} path="/learn/flashcards" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

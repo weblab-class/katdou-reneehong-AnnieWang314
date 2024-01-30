@@ -1,9 +1,8 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import EditProfile from "./EditProfile";
 import Settings from "./Settings";
 import "./Profile.css";
-import Unauth from "../intermediate/Unauth";
 
 type Props = {
   userName: string;
@@ -15,6 +14,7 @@ type Props = {
   totalWordCount: number;
 };
 const Profile = (props: Props) => {
+  const navigate = useNavigate();
   const { userName, userDate, aboutMe, userColor, userId, wordsCompleted, totalWordCount } = props;
   function formatDate(date) {
     const d = new Date(date);
@@ -34,10 +34,11 @@ const Profile = (props: Props) => {
 
   const formattedUserDate = formatDate(userDate);
 
-  if (!userId) {
-    window.location.replace("/unauth");
-    return <Unauth />;
-  }
+  useEffect(() => {
+    if (!props.userId) {
+      navigate("/unauth");
+    }
+  }, [props.userId, navigate]);
 
   return (
     <div className="Profile-container">

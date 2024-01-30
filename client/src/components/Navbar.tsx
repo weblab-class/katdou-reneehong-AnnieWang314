@@ -54,13 +54,13 @@ const Navbar = (props: Props) => {
             >
               profile
             </NavLink>
-            <div onClick={handleLogout} className="Navbar-start Navbar-logout u-openSans500">
+            <div onClick={handleLogout} className="Navbar-start Navbar-logout">
               logout
             </div>
           </>
         ) : (
           <>
-            <Link to="/login" className="Navbar-start u-openSans500">
+            <Link to="/login" className="Navbar-start">
               start now
             </Link>
           </>

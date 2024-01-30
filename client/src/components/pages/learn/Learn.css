@@ -1,10 +1,10 @@
 .Learn-container {
-  height: calc(85vh - 68px);
+  min-height: calc(84vh - 148px);
   display: flex;
   gap: 8vw;
   justify-content: center;
   align-items: center;
-  padding: 5vh 0 10vh 0;
+  padding: 80px 0 16vh 0;
 }
 .Learn-lib {
   width: 24vw;
@@ -17,18 +17,54 @@
   justify-content: center;
   align-items: center;
 }
+.Learn-left {
+  width: 24vw;
+  height: 170px;
+  padding: 30px;
+  background-color: var(--light);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
 
 .Learn-title {
-  width: 24vw;
-  height: 48px;
+  width: 23vw;
+  height: 50px;
   border-radius: 10px;
   background-color: var(--primary);
   color: var(--primary--dim);
-  font-size: 20px;
+  font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
+  /* padding: 10px; */
+}
+.Learn-options-container {
+  display: flex;
+  flex-direction: column;
+  width: 23vw;
+  border-radius: 8px;
+  gap: 2px;
+  overflow: hidden;
+}
+.Learn-option {
+  font-size: 20px;
+  padding: 10px;
+  background-color: #d5d1ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Learn-left {
+  min-width: 200px;
+}
+.Learn-title,
+.Learn-options-container {
+  min-width: 200px;
 }
 
 .Learn-libraryWords {

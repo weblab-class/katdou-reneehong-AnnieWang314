@@ -6,9 +6,10 @@
 .Home-top-container {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 68px);
+  min-height: calc(100vh - 168px);
   justify-content: space-around;
   align-items: center;
+  padding: 50px;
 }
 .Home-top-top {
   display: flex;
@@ -124,7 +125,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 300px;
+  width: 350px;
   gap: 2vh;
 }
 .Home-login {
@@ -140,9 +141,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 80vh;
+  min-height: calc(100vh - 200px);
   overflow: scroll;
-  padding: 10vh 10vw 10vh 10vw;
+  padding: 100px 10vw 100px 10vw;
   background-color: var(--secondary);
 }
 .Home-about-title {
@@ -164,4 +165,21 @@
   flex-direction: column;
   flex: 1;
   gap: 45px;
+}
+
+@media (max-width: 720px) {
+  .Home-top-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .Home-top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    text-align: center;
+  }
 }
