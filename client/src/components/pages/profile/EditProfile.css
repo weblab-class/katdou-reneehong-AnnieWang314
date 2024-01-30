@@ -57,10 +57,27 @@
   border: none;
   margin-left: 15px;
 }
+.EditProfile-submitButton:hover {
+  display: flex;
+  font-size: 23px;
+  color: #2d3aaf;
+  background-color: var(--primary);
+  font-family: "Roboto", serif;
+  border: none;
+  margin-left: 15px;
+}
 
 .EditProfile-backButton {
   margin-top: 20px;
+  font-family: "Roboto", serif;
   display: flex;
   font-size: 23px;
   color: #4f4b54;
+}
+
+.EditProfile-backButton:hover {
+  margin-top: 20px;
+  display: flex;
+  font-size: 23px;
+  color: #000000;
 }

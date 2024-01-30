@@ -42,7 +42,7 @@ const Home = () => {
           </div>
           <div className="Home-top-right">
             <h1>stay connected!</h1>
-            <div>ur path to learning the newest, gen-z language (pg-13 edition).</div>
+            <div>ur path to learning the newest gen-z slanguage (pg-13 edition).</div>
             {/* <div>
               have an account?{" "}
               <Link to="/login" className="Home-login purple-link">
@@ -63,20 +63,20 @@ const Home = () => {
         <p className="Home-about-qna-container">
           <div className="Home-about-column">
             <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+              question="why was slangz created?"
+              answer="slangz was created to provide users with an interactive, customizable way to learn the newest slangz. this website is beginning with gen-z slang, and we hope to expand it to many other types of slang!"
             />
             <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+              question="what's the goal of slangz?"
+              answer="our hope is that slangz will help to bring (blend!) generations of people together."
             />
             <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+              question="how will slangz help me learn?"
+              answer="slangz has two ways to explore slang: flashcards and practice. in flashcards, you can scroll terms, learn their definitions, explore their origins, and see them in example phrases. in practice, you will match each term to their definition, origin, or phrase."
             />
             <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+              question="send it? or blend it?"
+              answer="we're sending it by flipping the classroom: kids are teaching adults. we're blending by blending generations of people together. "
             />
           </div>
           <div className="Home-about-column">

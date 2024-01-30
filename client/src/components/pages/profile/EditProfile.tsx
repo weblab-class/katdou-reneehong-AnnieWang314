@@ -74,10 +74,11 @@ const EditProfile = (props: Props) => {
             placeholder="write text here..."
           />
         </div>
-
-        <button type="submit" className="EditProfile-submitButton">
-          save changes
-        </button>
+        
+          <button type="submit" className="EditProfile-submitButton">
+            save changes
+          </button>
+        
       </form>
       <Link to="/profile" style={{ textDecoration: "none" }} className="EditProfile-backButton">
         back
