@@ -1,0 +1,52 @@
+.NotFound-container {
+  height: calc(100vh - 568px);
+  padding: 150px;
+  padding-bottom: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10vh;
+}
+.NotFound-bounce-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.NotFound-bounce {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: var(--primary--dim);
+  position: absolute;
+}
+
+@keyframes NF-bounce1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5vw, 0);
+  }
+}
+@keyframes NF-bounce2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5vw, 0);
+  }
+}
+
+.NF-circle1 {
+  animation: NF-bounce1 4s infinite;
+  animation-timing-function: linear;
+}
+.NF-circle2 {
+  animation: NF-bounce2 4s infinite;
+  animation-timing-function: linear;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import homeLogoUrl from "../../assets/homeLogo.svg";
-import logoUrl from "../../assets/logo.svg";
+import logoUrl from "../../../assets/logo.svg";
+import SingleQna from "./SingleQna";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
@@ -18,6 +18,15 @@ const Home = () => {
     }, 4000); // Change the animation every 4 seconds
 
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (window.location.hash === "#about") {
+      const aboutSection = document.getElementById("about");
+      if (aboutSection) {
+        setTimeout(() => aboutSection.scrollIntoView({ behavior: "smooth" }), 0);
+      }
+    }
   }, []);
 
   return (
@@ -52,41 +61,41 @@ const Home = () => {
           <img src={logoUrl} alt="Logo" className="Home-about-logo" />
         </div>
         <p className="Home-about-qna-container">
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
+          <div className="Home-about-column">
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
           </div>
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
-          </div>
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
-          </div>
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
-          </div>
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
-          </div>
-          <div className="Home-about-qna">
-            <div className="Home-about-q">Q: dipsum lorum mom serum arorum</div>
-            <div className="Home-about-a">
-              &gt; A: bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee
-            </div>
+          <div className="Home-about-column">
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
+            <SingleQna
+              question="dipsum lorum mom serum arorum"
+              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
+            />
           </div>
         </p>
       </div>
