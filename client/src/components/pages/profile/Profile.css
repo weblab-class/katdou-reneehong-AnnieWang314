@@ -1,7 +1,7 @@
 .Profile-container {
   display: flex;
   flex-direction: column;
-  min-height: calc(64vh - 68px);
+  min-height: calc(70vh - 68px);
   padding: 10vh 20vw 20vh 20vw;
   gap: 3vh;
 }
@@ -22,11 +22,11 @@
   border-style: solid;
   border-color: #5d6adf;
   border-width: 10px;
-  margin: 20px;
+  margin: 20px 0px 20px 20px;
 }
 
 .Profile-info {
-  margin: 20px;
+  margin: 20px 20px 20px 0px;
 }
 
 .Profile-user {
@@ -38,16 +38,16 @@
 .Profile-username {
   text-wrap: nowrap;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 30px;
   border-color: #5d6adf;
   border-width: 2px;
   border-style: solid;
   color: black;
   font-size: 35px;
-  height: 47px;
+  height: auto;
   width: auto;
   margin: 20px;
-  padding: 10px;
+  padding: 10px 20px 10px 20px;
 }
 
 .Profile-joinDate {
@@ -58,10 +58,12 @@
 
 .Profile-bio {
   font-size: 20px;
-  margin-left: 20px;
+  margin-left: 50px;
+  margin-bottom: 30px;
 }
 
 .Profile-buttons {
+  margin-left: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,12 +71,12 @@
 }
 
 .Profile-button {
-  width: 150px;
-  height: 60px;
+  width: 40%;
+  height: 30px;
   border-color: #5d6adf;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 20px;
-  font-size: 20px;
+  font-size: 15px;
   color: #5d6adf;
   display: flex;
   justify-content: center;
@@ -86,24 +88,31 @@
 }
 
 .Profile-progress {
-  margin-left: 50px;
-  width: 60%;
+  margin-left: 0;
+  width: 95%;
   background-color: #9b99ff;
   border-radius: 8px;
   box-shadow: 0 1px 3px black;
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 .Profile-progress-bar {
   height: 20px;
   background-color: #5d6adf;
   border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .Profile-wordCount {
-  margin-left: 50px;
+  margin-left: 15px;
 }
 
+@media (max-width: 1300px) and (min-width: 1000px) {
+  .Profile-progress {
+    width: 740px;
+  }
+}
 @media (max-width: 1000px) and (min-width: 800px) {
   .Profile-container {
     padding: 10vh 10vw 20vh 10vw; /* Adjust the reduced padding for even smaller screens */
@@ -114,6 +123,9 @@
   .Profile-info {
     margin-left: 5px;
   }
+  .Profile-progress {
+    width: 700px;
+  }
 }
 
 @media (max-width: 800px) {
@@ -122,17 +134,31 @@
   }
   .Profile-photo {
     margin-right: 1px;
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
+    border-width: 5px;
   }
   .Profile-info {
     margin-left: 1px;
   }
   .Profile-username {
-    font-size: 30px;
-    padding-bottom: 0px;
+    font-size: 22px;
   }
   .Profile-bio {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .Profile-button {
+    font-size: 13px;
+  }
+  .Profile-progress {
+    margin-left: 15px;
+    width: 90%;
+    margin-top: 0px;
+  }
+  .Profile-progress-bar {
+    height: 18px;
+  }
+  .Profile-wordCount {
+    font-size: 16px;
   }
 }

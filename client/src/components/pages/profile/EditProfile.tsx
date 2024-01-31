@@ -23,25 +23,36 @@ const EditProfile = (props: Props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    let promises: Promise<void>[] = [];
+
     if (color) {
-      post("/api/updatecolor", { color })
+      const colorPromise = post("/api/updatecolor", { color })
         .then(() => {
           console.log("Color updated");
         })
         .catch((error) => {
           console.error("Error updating color: ", error);
         });
+      promises.push(colorPromise);
     }
+
     if (aboutMe) {
-      post("/api/updateaboutme", { aboutMe })
+      const aboutMePromise = post("/api/updateaboutme", { aboutMe })
         .then(() => {
           console.log("About me updated");
         })
         .catch((error) => {
           console.error("Error updating about me: ", error);
         });
+      promises.push(aboutMePromise);
     }
+
+    Promise.all(promises).then(() => {
+      // Redirect to a new page after both requests are completed
+      window.location.href = "/profile"; // Replace '/new-page-url' with the URL you want to redirect to
+    });
   };
+
   if (!props.userId) {
     window.location.replace("/unauth");
     return <Unauth />;
@@ -74,11 +85,10 @@ const EditProfile = (props: Props) => {
             placeholder="write text here..."
           />
         </div>
-        
-          <button type="submit" className="EditProfile-submitButton">
-            save changes
-          </button>
-        
+
+        <button type="submit" className="EditProfile-submitButton">
+          save changes
+        </button>
       </form>
       <Link to="/profile" style={{ textDecoration: "none" }} className="EditProfile-backButton">
         back
