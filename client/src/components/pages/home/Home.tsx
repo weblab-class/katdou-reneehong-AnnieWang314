@@ -88,11 +88,11 @@ const Home = () => {
             
             <SingleQna
               question="who are we?"
-              answer="we're three mit students who are hella lit and are really outta pocket"
+              answer="we're three mit students who are hella lit and are really outta pocket. hopefully we understood the assignment"
             />
             <SingleQna
               question="how do sets work?"
-              answer="sets are groups of four words and are not ordered in increasing level of difficulty. you may start any set at any time. your progress bar reflects the number of words you have completed."
+              answer="sets are groups of four words and are not ordered in increasing level of difficulty. you may start any set at any time."
             />
             <SingleQna
               question="send it? or blend it?"
