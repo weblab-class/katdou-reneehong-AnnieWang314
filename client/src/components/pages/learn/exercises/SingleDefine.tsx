@@ -18,6 +18,11 @@ const SingleDefine = (props: Props) => {
       setResult("try again");
     }
   };
+
+  if (!props.word) {
+    return <div className="SingleDefine-container"></div>;
+  }
+
   return (
     <div className="SingleDefine-container">
       <div className="SingleDefine-card">
@@ -28,7 +33,7 @@ const SingleDefine = (props: Props) => {
           className="SingleDefine-searchBar"
           type="text"
           name="query"
-          placeholder="find your words..."
+          placeholder="guess your word..."
           autoComplete="off"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}

@@ -20,12 +20,12 @@
   justify-content: space-between;
 }
 
-.Questions-start-over:hover {
+.Questions-reset:hover {
   cursor: pointer;
 }
 
 .Questions-button-nav {
-  /* visibility: hidden; */
+  visibility: hidden;
   display: flex;
   background-color: var(--primary--dim);
   padding: var(--m) var(--l);

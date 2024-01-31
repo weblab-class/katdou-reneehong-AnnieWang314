@@ -1,8 +1,8 @@
 .Profile-container {
   display: flex;
   flex-direction: column;
-  min-height: calc(70vh - 68px);
-  padding: 10vh 20vw 20vh 20vw;
+  min-height: calc(60vh - 68px);
+  padding: 20vh 20vw 20vh 20vw;
   gap: 3vh;
 }
 
@@ -15,8 +15,8 @@
 }
 
 .Profile-photo {
-  width: 200px;
-  height: 200px;
+  width: 16vw;
+  height: 16vw;
   aspect-ratio: 1/1;
   border-radius: 100%;
   border-style: solid;
@@ -47,6 +47,7 @@
   height: auto;
   width: auto;
   margin: 20px;
+  margin-left: 10px;
   padding: 10px 20px 10px 20px;
 }
 
@@ -117,9 +118,9 @@
   .Profile-container {
     padding: 10vh 10vw 20vh 10vw; /* Adjust the reduced padding for even smaller screens */
   }
-  .Profile-photo {
+  /* .Profile-photo {
     margin-right: 5px;
-  }
+  } */
   .Profile-info {
     margin-left: 5px;
   }
@@ -130,10 +131,10 @@
 
 @media (max-width: 800px) {
   .Profile-container {
-    padding: 10vh 2vw 20vh 2vw; /* Adjust the reduced padding for smaller screens */
+    padding: 10vh 16px 20vh 16px; /* Adjust the reduced padding for smaller screens */
   }
   .Profile-photo {
-    margin-right: 1px;
+    /* margin-right: 1px; */
     width: 150px;
     height: 150px;
     border-width: 5px;

@@ -10,14 +10,16 @@ import "./Questions.css";
 
 type Props = {
   userId: string | undefined;
+  level: number;
+  words: Term[];
+  progress: number;
+  questionsOrder: number[];
 };
 
 const Questions = (props: Props) => {
-  const location = useLocation();
-  const { level, words, progress, questionsOrder } = location.state;
-  console.log(questionsOrder);
-
   const navigate = useNavigate();
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(props.progress);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     if (!props.userId) {
@@ -25,63 +27,96 @@ const Questions = (props: Props) => {
     }
   }, [props.userId, navigate]);
 
+  useEffect(() => {
+    setCurrentQuestionIndex(props.progress);
+    if (props.words.length > 0 && props.questionsOrder.length > 0) {
+      setLoaded(true); // Indicates that the component is ready to render
+    }
+  }, [props.progress, props.words, props.questionsOrder]);
+
   const numToComponent = (number: number, words: Term[]) => {
-    let index = Math.floor((number - 1) / 4);
+    let index = Math.floor((number - 1) / 2);
     let word = words[index];
 
     // Render the appropriate question component based on the number
     switch (
-      number % 4 // Use modulo to determine the type of question component for each word
+      number % 2 // Use modulo to determine the type of question component for each word
     ) {
+      // case 1:
+      //   return <SingleMC word={word} />;
       case 1:
-        return <SingleMC word={word} />;
-      case 2:
         return <SingleFill word={word} />;
-      case 3:
-        return <SingleDefine word={word} />;
       case 0:
-        return <SingleWrite word={word} />;
+        return <SingleDefine word={word} />;
+      // case 0:
+      //   return <SingleWrite word={word} />;
     }
   };
 
-  // const handleNextTerm = () => {
-  //   post("/api/updateCurrentIndex", { newIndex: currentIndex + 1 }).then((response) => {
-  //     setCurrentIndex(response.currentIndex);
-  //   });
-  // };
+  const handleNextTerm = () => {
+    let newIndex = currentQuestionIndex + 1;
+    // If newIndex is greater than or equal to the length of props.questionsOrder,
+    // set it to the length of props.questionsOrder - 1
+    newIndex = Math.min(newIndex, props.questionsOrder.length - 1);
 
-  // const handlePrevTerm = () => {
-  //   post("/api/updateCurrentIndex", { newIndex: currentIndex - 1 }).then((response) => {
-  //     setCurrentIndex(response.currentIndex);
-  //   });
-  // };
-
-  const handleStartOver = () => {
-    console.log("start over");
+    post("/api/updateProgress", {
+      newIndex: newIndex,
+      currentLevel: props.level,
+    })
+      .then((response) => {
+        setCurrentQuestionIndex(response.currentQuestionIndex);
+      })
+      .catch((error) => {
+        console.error("Error updating progress:", error);
+      });
   };
+
+  const handlePrevTerm = () => {
+    let newIndex = currentQuestionIndex - 1;
+    // If newIndex is less than 0, set it to 0
+    newIndex = Math.max(newIndex, 0);
+
+    post("/api/updateProgress", {
+      newIndex: newIndex,
+      currentLevel: props.level,
+    })
+      .then((response) => {
+        setCurrentQuestionIndex(response.currentQuestionIndex);
+      })
+      .catch((error) => {
+        console.error("Error updating progress:", error);
+      });
+  };
+  const handleBack = () => {
+    navigate("/learn/exercises");
+  };
+
+  if (!loaded) {
+    return <div className="Questions-container"></div>; // Or any other loading indicator
+  }
 
   return (
     <div className="Questions-container">
       <div
-        // onClick={handlePrevTerm}
-        className={`Questions-button-nav`}
+        onClick={handlePrevTerm}
+        className={`Questions-button-nav ${currentQuestionIndex !== 0 ? "visible" : ""}`}
       >
         back
       </div>
       <div className="Questions-middle">
         <div className="Questions-middle-top">
-          <div>asdf / asdf</div>
-          <div onClick={handleStartOver} className="Questions-start-over black-link">
-            start over
+          <div onClick={handleBack} className="Questions-reset black-link">
+            all sets
+          </div>
+          <div>
+            set {props.level}: {currentQuestionIndex + 1} of {props.questionsOrder.length}
           </div>
         </div>
-        {questionsOrder.map((number: number) => {
-          return numToComponent(number, words);
-        })}
+        {numToComponent(props.questionsOrder[currentQuestionIndex], props.words)}
       </div>
       <div
-        // onClick={handleNextTerm}
-        className={`Questions-button-nav`}
+        onClick={handleNextTerm}
+        className={`Questions-button-nav ${currentQuestionIndex !== props.questionsOrder.length - 1 ? "visible" : ""}`}
       >
         next
       </div>

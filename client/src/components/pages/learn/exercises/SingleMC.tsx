@@ -11,9 +11,22 @@ const SingleMC = (props: Props) => {
   const [choices, setChoices] = useState<Term[]>([]);
   useEffect(() => {
     get("/api/randomMC").then((response) => {
-      setChoices(response.choices);
+      const updatedChoices = [...response.choices, props.word];
+      setChoices(updatedChoices);
     });
   }, []);
+
+  function shuffleArray(array: number[]): number[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      // Pick a random index from 0 to i
+      const j = Math.floor(Math.random() * (i + 1));
+      // Swap array[i] with the element at the random index
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  const array = Array.from({ length: 4 }, (_, index) => index);
+  const shuffledArray = shuffleArray(array);
 
   const handleWord1Click = () => {
     console.log("click1");
@@ -38,16 +51,16 @@ const SingleMC = (props: Props) => {
       </div>
       <div className="SingleMC-buttons">
         <div onClick={handleWord1Click} className="SingleMC-button black-link">
-          {/* {choices[0].term} */}
+          {choices[0].term}
         </div>
         <div onClick={handleWord2Click} className="SingleMC-button black-link">
-          {/* {choices[1].term} */}
+          {choices[1].term}
         </div>
         <div onClick={handleWord3Click} className="SingleMC-button black-link">
-          {/* {choices[2].term} */}
+          {choices[2].term}
         </div>
         <div onClick={handleWord4Click} className="SingleMC-button black-link">
-          {/* {choices[3].term} */}
+          {choices[3].term}
         </div>
       </div>
     </div>

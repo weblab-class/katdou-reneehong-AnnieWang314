@@ -29,6 +29,13 @@ import Unauth from "./pages/intermediate/Unauth";
 import "./App.css";
 //TODO(weblab student): REPLACE WITH YOUR OWN CLIENT_ID
 
+type Level = {
+  level: number;
+  words: Term[];
+  progress: number;
+  questionsOrder: number[];
+};
+
 const App = () => {
   const [userId, setUserId] = useState<string | undefined>(undefined);
   const [userName, setUserName] = useState("");
@@ -37,18 +44,9 @@ const App = () => {
   const [aboutMe, setAboutMe] = useState("");
   const [date, setDate] = useState("");
   const [words, setWords] = useState<Term[]>([]);
-  const [wordsCompleted, setWordsCompleted] = useState([
-    "hello",
-    "hi",
-    "yipee",
-    "gang",
-    "hi",
-    "yipee",
-    "gang",
-    "hi",
-    "yipee",
-    "gang",
-  ]);
+  const [levels, setLevels] = useState<Level[]>([]);
+  const [currentLevel, setCurrentLevel] = useState<Level | undefined>(undefined);
+  // const [wordsCompleted, setWordsCompleted] = useState(0);
 
   useEffect(() => {
     get("/api/whoami")
@@ -108,6 +106,29 @@ const App = () => {
       .catch((error) => console.error(error));
   }, []);
 
+  useEffect(() => {
+    get("/api/levels")
+      .then((response) => {
+        console.log(response.levels);
+        setLevels(response.levels);
+      })
+      .catch((error) => {
+        console.error("Error fetching levels:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (levels.length > 0) {
+      setCurrentLevel(levels[0]);
+    }
+  }, [levels]);
+
+  // useEffect(() => {
+  //   get("/api/sum").then((response) => {
+  //     setWordsCompleted(response.sum);
+  //   });
+  // }, []);
+
   const handleLogin = (credentialResponse: CredentialResponse) => {
     const userToken = credentialResponse.credential;
     const decodedCredential = jwt_decode(userToken as string) as { name: string; email: string };
@@ -164,7 +185,7 @@ const App = () => {
                 userDate={date}
                 aboutMe={aboutMe}
                 userColor={color}
-                wordsCompleted={wordsCompleted}
+                // wordsCompleted={wordsCompleted}
                 totalWordCount={words.length}
               />
             }
@@ -177,8 +198,26 @@ const App = () => {
             path="/settings"
           />
           <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
-          <Route element={<Exercises userId={userId} />} path="/learn/exercises" />
-          <Route element={<Questions userId={userId} />} path="/learn/exercises/questions" />
+          <Route
+            element={
+              <Exercises userId={userId} levels={levels} setCurrentLevel={setCurrentLevel} />
+            }
+            path="/learn/exercises"
+          />
+          {currentLevel && (
+            <Route
+              element={
+                <Questions
+                  userId={userId}
+                  level={currentLevel.level}
+                  words={currentLevel.words}
+                  progress={currentLevel.progress}
+                  questionsOrder={currentLevel.questionsOrder}
+                />
+              }
+              path="/learn/exercises/questions"
+            />
+          )}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -48,13 +48,13 @@
   justify-content: center;
   align-items: center;
   background-color: var(--light);
-  padding: 30px;
+  padding: 10px;
   height: 2vh;
   width: 3vw;
   border-radius: 30px;
   overflow: hidden;
   justify-content: space-around;
-  
+
   font-size: calc(1vw + 10px);
 }
 
