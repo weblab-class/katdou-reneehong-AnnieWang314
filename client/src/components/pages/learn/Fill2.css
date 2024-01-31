@@ -1,0 +1,76 @@
+.Fill2-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+.Fill2-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light);
+  padding: 30px;
+  height: 40vh;
+  min-height: 200px;
+  width: 30vw;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.Fill2-content {
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 5px;
+  overflow: auto;
+  display: flex;
+  color: var(--primary--dim);
+  font-size: calc(0.5vw + 20px);
+  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-wrap: wrap;
+  /* overflow-wrap: break-word;
+      word-wrap: break-word;
+      hyphens: auto; */
+}
+
+.Fill2-searchBar-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.Fill2-searchBar {
+  width: 20vw;
+  min-width: 150px;
+  height: 3vh;
+  border-radius: 20px;
+  border: none;
+  margin-bottom: 5px;
+  margin-right: 30px;
+  padding: 5px 0 5px 20px;
+  font-family: "Roboto serif", serif;
+}
+
+.Fill2-enter {
+  width: 5vw;
+  min-width: 60px;
+  height: 4vh;
+  border-radius: 20px;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  font-family: "Roboto serif", serif;
+  background-color: var(--mid--purple);
+  color: white;
+  margin-right: 20px;
+}
+
+.Fill2-enter:hover {
+  background-color: var(--primary--dim);
+}
+
+.Fill2-result {
+  font-size: 15px;
+  padding-top: 0.8vh;
+}

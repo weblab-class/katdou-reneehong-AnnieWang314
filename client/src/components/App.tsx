@@ -16,6 +16,8 @@ import Loading from "./pages/intermediate/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import Term from "../../../shared/Term";
+import Fill from "./pages/learn/Fill";
+import Fill2 from "./pages/learn/Fill2";
 import "../utilities.css";
 import {
   GoogleOAuthProvider,
@@ -176,6 +178,14 @@ const App = () => {
             path="/settings"
           />
           <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
+          <Route
+            element={<Fill term="salty" meaning="upset" example="why you salty" />}
+            path="/learn/fill"
+          />
+          <Route
+            element={<Fill2 term="salty" meaning="upset" example="why you salty" />}
+            path="/learn/fill2"
+          />
           <Route element={<Exercises words={words} userId={userId} />} path="/learn/exercises" />
           <Route path="*" element={<NotFound />} />
         </Routes>
