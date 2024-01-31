@@ -47,21 +47,18 @@ const Profile = (props: Props) => {
         <div className="Profile-info">
           <div className="Profile-user">
             <div className="Profile-username">@{userName}</div>
-            <div className="Profile-joinDate">last seen {formattedUserDate}</div>
+            <div className="Profile-joinDate">last practiced on {formattedUserDate}</div>
           </div>
           <div className="Profile-bio">{aboutMe}</div>
+          <div className="Profile-buttons">
+            <Link to="/editprofile" style={{ textDecoration: "none" }} className="Profile-button">
+              edit profile
+            </Link>
+            <Link to="/settings" style={{ textDecoration: "none" }} className="Profile-button">
+              settings
+            </Link>
+          </div>
         </div>
-      </div>
-
-      <div className="Profile-buttons">
-        <Link to="/editprofile" style={{ textDecoration: "none" }} className="Profile-button">
-          edit profile
-        </Link>
-        <div className="Profile-button">my friends</div>
-        <div className="Profile-button">chat</div>
-        <Link to="/settings" style={{ textDecoration: "none" }} className="Profile-button">
-          settings
-        </Link>
       </div>
 
       <div className="Profile-progress-container">

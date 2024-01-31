@@ -35,6 +35,18 @@ const App = () => {
   const [aboutMe, setAboutMe] = useState("");
   const [date, setDate] = useState("");
   const [words, setWords] = useState<Term[]>([]);
+  const [wordsCompleted, setWordsCompleted] = useState([
+    "hello",
+    "hi",
+    "yipee",
+    "gang",
+    "hi",
+    "yipee",
+    "gang",
+    "hi",
+    "yipee",
+    "gang",
+  ]);
 
   useEffect(() => {
     get("/api/whoami")
@@ -150,8 +162,8 @@ const App = () => {
                 userDate={date}
                 aboutMe={aboutMe}
                 userColor={color}
-                wordsCompleted={["hi", "hello", "yipee"]}
-                totalWordCount={4}
+                wordsCompleted={wordsCompleted}
+                totalWordCount={words.length}
               />
             }
             path="/profile"
