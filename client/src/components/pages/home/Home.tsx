@@ -72,7 +72,7 @@ const Home = () => {
             />
             <SingleQna
               question="what's the goal of slangz?"
-              answer="our hope is that slangz will help to bring (blend!) generations of people together."
+              answer="our hope is that slangz will help to bring generations of people together."
             />
             <SingleQna
               question="how will slangz help me learn?"
@@ -83,7 +83,7 @@ const Home = () => {
           <div className="Home-about-column">
             <SingleQna
               question="where did we get our words from?"
-              answer="we sourced our words primarily from the gen z wikipedia page, and added some of our own examples as well. we used a profanity checker to ensure that any non pg-13 words are not included."
+              answer="we sourced our words primarily from the gen z slang wikipedia page and gabb.com, and added some of our own examples as well."
             />
             
             <SingleQna
@@ -91,12 +91,16 @@ const Home = () => {
               answer="we're three mit students who are hella lit and are really outta pocket"
             />
             <SingleQna
-              question="who is mommy?"
-              answer="renee"
+              question="how do sets work?"
+              answer="sets are groups of four words and are not ordered in increasing level of difficulty. you may start any set at any time. your progress bar reflects the number of sets you have completed."
             />
             <SingleQna
               question="send it? or blend it?"
               answer="we're sending it by flipping the classroom: kids are teaching adults. we're blending by blending generations of people together. "
+            />
+             <SingleQna
+              question="why is everything in lowercase?"
+              answer="because gen z never capitalizes."
             />
           </div>
         </p>
