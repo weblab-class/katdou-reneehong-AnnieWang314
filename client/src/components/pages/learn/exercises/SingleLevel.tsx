@@ -24,9 +24,8 @@ const SingleLevel = (props: Props) => {
       </div>
       <div className="SingleLevel-bottom">
         {props.currentWords.map((word) => (
-          <div>{word}</div>
+          <div className="SingleLevel-word">{word}</div>
         ))}
-        <div className="u-bold">START</div>
       </div>
     </div>
   );
