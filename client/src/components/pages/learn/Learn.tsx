@@ -23,10 +23,12 @@ const Learn = (props: Props) => {
           <Link to="flashcards" className="Learn-option black-link">
             flashcards
           </Link>
-          <div className="Learn-option black-link">exercises</div>
+          <Link to="exercises" className="Learn-option black-link">
+            exercises
+          </Link>
         </div>
       </div>
-      <div className="Learn-lib">
+      {/* <div className="Learn-lib">
         <div className="Learn-title">learn my lib</div>
         <div className="Learn-libraryWords">
           <div className="Learn-libraryWord">sus</div>
@@ -40,7 +42,7 @@ const Learn = (props: Props) => {
           <div className="Learn-libraryWord">shook</div>
           <div className="Learn-libraryWord">lit</div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

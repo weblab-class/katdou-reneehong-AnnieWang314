@@ -1,0 +1,28 @@
+.Exercises-container {
+  min-height: calc(100vh - 218px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  gap: 10px;
+}
+.Exercises-levels-container {
+  background-color: var(--light);
+  border-radius: 8px;
+  width: 46vw;
+  height: 55vh;
+  min-width: 400px;
+  min-height: 300px;
+  padding: 20px;
+  overflow: hidden;
+}
+.Exercises-levels-scroll {
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

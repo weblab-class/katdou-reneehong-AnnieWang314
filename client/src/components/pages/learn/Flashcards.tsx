@@ -2,23 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SingleFlashcard from "./SingleFlashcard";
 import Term from "../../../../../shared/Term";
+import { get, post } from "../../../utilities";
 import "./Flashcards.css";
 
 type Props = {
   userId: string | undefined;
-  words: Term[];
 };
 
 const Flashcards = (props: Props) => {
-  const [currentIndex, setCurrentIndex] = useState<number>(() => {
-    const savedIndex = localStorage.getItem("currentIndex");
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-  const [shuffledTerms, setShuffledTerms] = useState<Term[]>(() => {
-    const savedTerms = localStorage.getItem("shuffledTerms");
-    return savedTerms ? JSON.parse(savedTerms) : [];
-  });
-
+  const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+  const [flashcardsOrder, setFlashcardsOrder] = useState<Term[] | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,49 +21,43 @@ const Flashcards = (props: Props) => {
   }, [props.userId, navigate]);
 
   useEffect(() => {
-    if (shuffledTerms.length === 0) {
-      const shuffleTerms = (terms: Term[]) => {
-        let array = [...terms];
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-      };
-      setShuffledTerms(shuffleTerms(props.words));
-    }
-  }, [props.words, shuffledTerms.length]);
+    const fetchData = async () => {
+      try {
+        const flashcardsResponse = await get("/api/flashcardsOrder");
+        setFlashcardsOrder(flashcardsResponse.flashcardsOrder);
 
-  useEffect(() => {
-    localStorage.setItem("currentIndex", currentIndex.toString());
-    localStorage.setItem("shuffledTerms", JSON.stringify(shuffledTerms));
-  }, [currentIndex, shuffledTerms]);
+        const indexResponse = await get("/api/currentIndex");
+        setCurrentIndex(indexResponse.currentIndex);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (flashcardsOrder === null || currentIndex === null) {
+    return <div className="Flashcards-container"></div>;
+  }
 
   const handleNextTerm = () => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex + 1 < shuffledTerms.length) {
-        return prevIndex + 1;
-      } else {
-        return prevIndex;
-      }
+    post("/api/updateCurrentIndex", { newIndex: currentIndex + 1 }).then((response) => {
+      setCurrentIndex(response.currentIndex);
     });
   };
 
   const handlePrevTerm = () => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex - 1 >= 0) {
-        return prevIndex - 1;
-      } else {
-        return prevIndex;
-      }
+    post("/api/updateCurrentIndex", { newIndex: currentIndex - 1 }).then((response) => {
+      setCurrentIndex(response.currentIndex);
     });
   };
 
-  const startOver = () => {
-    localStorage.removeItem("currentIndex");
-    localStorage.removeItem("shuffledTerms");
-    setCurrentIndex(0);
-    setShuffledTerms([]);
+  const handleStartOver = () => {
+    post("/api/updateCurrentIndex", { newIndex: 0 }).then((response) => {
+      setCurrentIndex(response.currentIndex);
+    });
+    post("/api/updateFlashcardsOrder").then((response) => {
+      setFlashcardsOrder(response.flashcardsOrder);
+    });
   };
 
   return (
@@ -84,24 +71,24 @@ const Flashcards = (props: Props) => {
       <div className="Flashcards-middle">
         <div className="Flashcards-middle-top">
           <div>
-            {currentIndex + 1} / {shuffledTerms.length}
+            {currentIndex + 1} / {flashcardsOrder.length}
           </div>
-          <div onClick={startOver} className="Flashcards-start-over black-link">
-            Start Over
+          <div onClick={handleStartOver} className="Flashcards-start-over black-link">
+            start over
           </div>
         </div>
-        {shuffledTerms.length > 0 && (
+        {flashcardsOrder.length > 0 && (
           <SingleFlashcard
-            key={shuffledTerms[currentIndex]._id}
-            term={shuffledTerms[currentIndex].term}
-            meaning={shuffledTerms[currentIndex].meaning}
-            example={shuffledTerms[currentIndex].example}
+            key={flashcardsOrder[currentIndex]._id}
+            term={flashcardsOrder[currentIndex].term}
+            meaning={flashcardsOrder[currentIndex].meaning}
+            example={flashcardsOrder[currentIndex].example}
           />
         )}
       </div>
       <div
         onClick={handleNextTerm}
-        className={`Flashcards-button-nav ${currentIndex < shuffledTerms.length - 1 ? "visible" : ""}`}
+        className={`Flashcards-button-nav ${currentIndex < flashcardsOrder.length - 1 ? "visible" : ""}`}
       >
         next
       </div>
