@@ -10,7 +10,7 @@ import Learn from "./pages/learn/Learn";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/profile/Settings";
 import EditProfile from "./pages/profile/EditProfile";
-import MCs from "./pages/learn/exercises/MCs";
+import Questions from "./pages/learn/exercises/Questions";
 import Flashcards from "./pages/learn/Flashcards";
 import Exercises from "./pages/learn/exercises/Exercises";
 import Loading from "./pages/intermediate/Loading";
@@ -178,7 +178,7 @@ const App = () => {
           />
           <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
           <Route element={<Exercises userId={userId} />} path="/learn/exercises" />
-          <Route element={<MCs userId={userId}  />} path="/learn/mcs" />
+          <Route element={<Questions userId={userId} />} path="/learn/exercises/questions" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

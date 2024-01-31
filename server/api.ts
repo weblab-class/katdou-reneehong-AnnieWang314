@@ -31,6 +31,7 @@ type Level = {
   level: number;
   words: Term[];
   progress: number;
+  questionsOrder: number[];
 };
 
 function shuffle<T>(array: T[]): T[] {
@@ -247,6 +248,16 @@ router.post("/updateCurrentIndex", async (req, res) => {
   res.send({ currentIndex: user.currentIndex });
 });
 
+function shuffleArray(array: number[]): number[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Pick a random index from 0 to i
+    const j = Math.floor(Math.random() * (i + 1));
+    // Swap array[i] with the element at the random index
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 router.get("/levels", async (req, res) => {
   if (!req.user) {
     return res.status(401).send({ msg: "Not logged in" });
@@ -262,6 +273,7 @@ router.get("/levels", async (req, res) => {
   }
 
   const terms = await TermModel.find().sort({ term: 1 });
+  let needsSave = false;
 
   const levels: Level[] = [];
   for (let i = 0; i < terms.length; i += 4) {
@@ -269,15 +281,27 @@ router.get("/levels", async (req, res) => {
     const levelNumber = i / 4 + 1;
 
     const userProgress = user.progress.find((p) => p.level === levelNumber);
+    const array = Array.from({ length: 16 }, (_, i) => i + 1);
 
     levels.push({
       level: levelNumber,
       words: levelTerms,
       progress: userProgress ? userProgress.totalQuestionsAnswered : 0,
+      questionsOrder: userProgress ? userProgress.questionsOrder : shuffleArray(array),
     });
   }
 
+  await user.save();
+
   res.send({ levels: levels });
+});
+
+router.get("/randomMC", async (req, res) => {
+  const randomWords = await TermModel.aggregate([
+    { $sample: { size: 4 } }, // $sample selects a specified number of documents randomly
+  ]);
+
+  res.send({ choices: randomWords });
 });
 
 // anything else falls to this "not found" case

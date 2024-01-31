@@ -27,6 +27,10 @@ const getOrCreateUser = (user: TokenPayload) => {
         aboutme: "",
         color: "#d5d1ff",
         date: new Date().toLocaleDateString(),
+        progress: [],
+        flashcardsOrder: [],
+        currentIndex: 0,
+        completedWords: [],
       });
       return newUser.save();
     }

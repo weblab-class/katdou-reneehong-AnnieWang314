@@ -8,7 +8,7 @@ const UserProgressSchema = new Schema({
       type: Schema.Types.Mixed,
     },
   ],
-  questionsOrder: [Number],
+  questionsOrder: { type: [Number], default: [] },
   totalQuestionsAnswered: { type: Number, default: 0 },
 });
 

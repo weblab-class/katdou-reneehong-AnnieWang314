@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Term from "../../../../../../shared/Term";
 import { get } from "../../../../utilities";
-import "./SingleMC.css";
+import "./SingleWrite.css";
 
 type Props = {
   word: Term;
 };
 
-const SingleMC = (props: Props) => {
+const SingleWrite = (props: Props) => {
   const [choices, setChoices] = useState<Term[]>([]);
   useEffect(() => {
     get("/api/randomMC").then((response) => {
@@ -32,21 +32,21 @@ const SingleMC = (props: Props) => {
   };
 
   return (
-    <div className="SingleMC-container">
-      <div className="SingleMC-card">
-        <div className="SingleMC-content">{props.word.meaning}</div>
+    <div className="SingleWrite-container">
+      <div className="SingleWrite-card">
+        <div className="SingleWrite-content">{props.word.meaning}</div>
       </div>
-      <div className="SingleMC-buttons">
-        <div onClick={handleWord1Click} className="SingleMC-button black-link">
+      <div className="SingleWrite-buttons">
+        <div onClick={handleWord1Click} className="SingleWrite-button black-link">
           {/* {choices[0].term} */}
         </div>
-        <div onClick={handleWord2Click} className="SingleMC-button black-link">
+        <div onClick={handleWord2Click} className="SingleWrite-button black-link">
           {/* {choices[1].term} */}
         </div>
-        <div onClick={handleWord3Click} className="SingleMC-button black-link">
+        <div onClick={handleWord3Click} className="SingleWrite-button black-link">
           {/* {choices[2].term} */}
         </div>
-        <div onClick={handleWord4Click} className="SingleMC-button black-link">
+        <div onClick={handleWord4Click} className="SingleWrite-button black-link">
           {/* {choices[3].term} */}
         </div>
       </div>
@@ -54,4 +54,4 @@ const SingleMC = (props: Props) => {
   );
 };
 
-export default SingleMC;
+export default SingleWrite;

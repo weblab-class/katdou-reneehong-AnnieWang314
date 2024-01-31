@@ -12,7 +12,7 @@ const SingleLevel = (props: Props) => {
   return (
     <div className="SingleLevel-container">
       <div className="SingleLevel-top">
-        <div className="SingleLevel-level u-bold">{"level " + props.level}</div>
+        <div className="SingleLevel-level u-bold">{"set " + props.level}</div>
         <div className="SingleLevel-progress">
           {props.progress + "/" + props.currentWords.length * 4}
         </div>

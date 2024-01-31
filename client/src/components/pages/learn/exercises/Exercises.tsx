@@ -13,6 +13,7 @@ type Level = {
   level: number;
   words: Term[];
   progress: number;
+  questionsOrder: number[];
 };
 
 const Exercises = (props: Props) => {
@@ -29,6 +30,7 @@ const Exercises = (props: Props) => {
     get("/api/levels")
       .then((response) => {
         setLevels(response.levels);
+        console.log("HEREEEE");
         console.log(response.levels);
       })
       .catch((error) => {
@@ -36,18 +38,31 @@ const Exercises = (props: Props) => {
       });
   }, []);
 
+  const handleClickLevel = (level: Level) => {
+    console.log(level);
+    navigate("questions", {
+      state: {
+        level: level.level,
+        words: level.words,
+        progress: level.progress,
+        questionsOrder: level.questionsOrder,
+      },
+    });
+  };
+
   return (
     <div className="Exercises-container">
       <div className="Exercises-levels-container">
         <div className="Exercises-levels-scroll">
           {levels.map((level) => {
             return (
-              <SingleLevel
-                key={level.level}
-                currentWords={level.words}
-                progress={level.progress}
-                level={level.level}
-              />
+              <div key={level.level} onClick={() => handleClickLevel(level)}>
+                <SingleLevel
+                  currentWords={level.words}
+                  progress={level.progress}
+                  level={level.level}
+                />
+              </div>
             );
           })}
         </div>
