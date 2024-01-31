@@ -92,7 +92,7 @@ const Home = () => {
             />
             <SingleQna
               question="how do sets work?"
-              answer="sets are groups of four words and are not ordered in increasing level of difficulty. you may start any set at any time. your progress bar reflects the number of sets you have completed."
+              answer="sets are groups of four words and are not ordered in increasing level of difficulty. you may start any set at any time. your progress bar reflects the number of words you have completed."
             />
             <SingleQna
               question="send it? or blend it?"
