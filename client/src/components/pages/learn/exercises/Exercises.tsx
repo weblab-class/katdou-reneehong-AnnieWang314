@@ -27,6 +27,7 @@ const Exercises = (props: Props) => {
     if (!props.userId) {
       navigate("/unauth");
     } else {
+
       props.levels.forEach((level) => {
         get("/api/getProgress", { level: level.level })
           .then((response) => {
@@ -47,7 +48,7 @@ const Exercises = (props: Props) => {
   };
 
   if (!loaded) {
-    return <div className="Exercises-container"></div>; // Or any other loading indicator
+    return <div className="Exercises-container">slay</div>; // Or any other loading indicator
   }
 
   return (
