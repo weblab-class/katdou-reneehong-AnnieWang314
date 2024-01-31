@@ -115,7 +115,7 @@ const App = () => {
       .catch((error) => {
         console.error("Error fetching levels:", error);
       });
-  }, []);
+  }, [userId]);
 
   useEffect(() => {
     if (levels.length > 0) {
