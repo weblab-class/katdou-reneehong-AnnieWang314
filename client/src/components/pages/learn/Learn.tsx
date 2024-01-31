@@ -18,7 +18,7 @@ const Learn = (props: Props) => {
   return (
     <div className="Learn-container">
       <div className="Learn-left">
-        <div className="Learn-title">ALL WORDS</div>
+        <div className="Learn-title">LEARN</div>
         <div className="Learn-options-container">
           <Link to="flashcards" className="Learn-option black-link">
             flashcards
