@@ -282,15 +282,24 @@ router.get("/levels", async (req, res) => {
     const userProgress = user.progress.find((p) => p.level === levelNumber);
     const array = Array.from({ length: levelTerms.length * 2 }, (_, i) => i + 1);
 
-    levels.push({
+    const newUserProgress = {
       level: levelNumber,
       words: levelTerms,
       progress: userProgress ? userProgress.totalQuestionsAnswered : 0,
       questionsOrder:
-        userProgress && userProgress.questionsOrder.length === levelTerms.length * 2
-          ? userProgress.questionsOrder
-          : shuffleArray(array),
-    });
+      userProgress && userProgress.questionsOrder.length === levelTerms.length * 2
+        ? userProgress.questionsOrder
+        : shuffleArray(array),
+    };
+
+    if(!userProgress) {
+      await UserModel.updateOne(
+        { _id: user._id},
+        { $push: { progress: newUserProgress } }
+      );
+    }
+
+    levels.push(newUserProgress);
   }
 
   await user.save();
@@ -309,7 +318,8 @@ router.post("/updateProgress", async (req, res) => {
   if (!user) {
     return res.status(404).send("User not found");
   }
-
+  // console.log(`${req.body.currentLevel}`)
+  console.log(user);
   const levelProgress = user.progress.find((p) => p.level === req.body.currentLevel);
   if (!levelProgress) {
     return res.status(404).json({ error: "Level progress not found" });
