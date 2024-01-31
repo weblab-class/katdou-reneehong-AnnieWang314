@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { get, post } from "../../../../utilities";
 import Term from "../../../../../../shared/Term";
 import SingleLevel from "./SingleLevel";
 import "./Exercises.css";
 
 type Props = {
   userId: string | undefined;
+};
+
+type Level = {
+  level: number;
   words: Term[];
+  progress: number;
 };
 
 const Exercises = (props: Props) => {
-  const [level, setLevel] = useState(1);
+  const [levels, setLevels] = useState<Level[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,24 +25,31 @@ const Exercises = (props: Props) => {
     }
   }, [props.userId, navigate]);
 
+  useEffect(() => {
+    get("/api/levels")
+      .then((response) => {
+        setLevels(response.levels);
+        console.log(response.levels);
+      })
+      .catch((error) => {
+        console.error("Error fetching levels:", error);
+      });
+  }, []);
+
   return (
     <div className="Exercises-container">
       <div className="Exercises-levels-container">
         <div className="Exercises-levels-scroll">
-          <SingleLevel
-            currentWords={[
-              "hihihi hihihihi hihihihi",
-              "byebye byebyebyeb",
-              "qwerty",
-              "asdfAOIFJAPIF",
-            ]}
-            progress={12}
-            level={1}
-          />
-          <SingleLevel currentWords={["hi", "bye", "qwerty", "asdf"]} progress={0} level={2} />
-          <SingleLevel currentWords={["hi", "bye", "qwerty", "asdf"]} progress={10} level={3} />
-          <SingleLevel currentWords={["hi", "bye", "qwerty", "asdf"]} progress={14} level={4} />
-          <SingleLevel currentWords={["hi", "bye", "qwerty", "asdf"]} progress={3} level={5} />
+          {levels.map((level) => {
+            return (
+              <SingleLevel
+                key={level.level}
+                currentWords={level.words}
+                progress={level.progress}
+                level={level.level}
+              />
+            );
+          })}
         </div>
       </div>
     </div>

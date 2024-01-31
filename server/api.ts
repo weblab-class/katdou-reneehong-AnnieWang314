@@ -2,7 +2,7 @@ import express from "express";
 import auth from "./auth";
 import socketManager from "./server-socket";
 import UserModel from "./models/User";
-import TermModel from "./models/Term";
+import TermModel, { Term } from "./models/Term";
 const router = express.Router();
 
 router.post("/login", auth.login);
@@ -26,6 +26,12 @@ router.post("/initsocket", (req, res) => {
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
+
+type Level = {
+  level: number;
+  words: Term[];
+  progress: number;
+};
 
 function shuffle<T>(array: T[]): T[] {
   for (let i = array.length - 1; i > 0; i--) {
@@ -198,12 +204,10 @@ router.post("/updateFlashcardsOrder", async (req, res) => {
   user.flashcardsOrder = shuffle(terms);
   await user.save();
 
-  res
-    .status(200)
-    .send({
-      message: "Flashcards order updated successfully.",
-      flashcardsOrder: user.flashcardsOrder,
-    });
+  res.status(200).send({
+    message: "Flashcards order updated successfully.",
+    flashcardsOrder: user.flashcardsOrder,
+  });
 });
 
 router.get("/currentIndex", async (req, res) => {
@@ -241,6 +245,39 @@ router.post("/updateCurrentIndex", async (req, res) => {
   }
   await user.save();
   res.send({ currentIndex: user.currentIndex });
+});
+
+router.get("/levels", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const user = await UserModel.findById(req.user._id).populate({
+    path: "progress",
+    populate: { path: "words", model: "Term" },
+  });
+
+  if (!user) {
+    return res.status(404).send("User not found.");
+  }
+
+  const terms = await TermModel.find().sort({ term: 1 });
+
+  const levels: Level[] = [];
+  for (let i = 0; i < terms.length; i += 4) {
+    const levelTerms = terms.slice(i, i + 4);
+    const levelNumber = i / 4 + 1;
+
+    const userProgress = user.progress.find((p) => p.level === levelNumber);
+
+    levels.push({
+      level: levelNumber,
+      words: levelTerms,
+      progress: userProgress ? userProgress.totalQuestionsAnswered : 0,
+    });
+  }
+
+  res.send({ levels: levels });
 });
 
 // anything else falls to this "not found" case
