@@ -34,14 +34,15 @@
 }
 .Settings-logOut-yes:hover {
   margin-right: 20px;
-  color: #2d3aaf;;
+  color: #2d3aaf;
+  cursor: pointer;
 }
-
 
 .Settings-logOut-no {
   color: var(--primary--dim);
 }
 .Settings-logOut-no:hover {
   margin-right: 20px;
-  color: #2d3aaf;;
+  color: #2d3aaf;
+  cursor: pointer;
 }

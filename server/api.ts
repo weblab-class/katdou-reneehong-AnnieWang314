@@ -31,6 +31,7 @@ type Level = {
   level: number;
   words: Term[];
   progress: number;
+  questionsOrder: number[];
 };
 
 function shuffle<T>(array: T[]): T[] {
@@ -247,6 +248,16 @@ router.post("/updateCurrentIndex", async (req, res) => {
   res.send({ currentIndex: user.currentIndex });
 });
 
+function shuffleArray(array: number[]): number[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    // Pick a random index from 0 to i
+    const j = Math.floor(Math.random() * (i + 1));
+    // Swap array[i] with the element at the random index
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 router.get("/levels", async (req, res) => {
   if (!req.user) {
     return res.status(401).send({ msg: "Not logged in" });
@@ -269,16 +280,119 @@ router.get("/levels", async (req, res) => {
     const levelNumber = i / 4 + 1;
 
     const userProgress = user.progress.find((p) => p.level === levelNumber);
+    const array = Array.from({ length: levelTerms.length * 2 }, (_, i) => i + 1);
 
     levels.push({
       level: levelNumber,
       words: levelTerms,
       progress: userProgress ? userProgress.totalQuestionsAnswered : 0,
+      questionsOrder:
+        userProgress && userProgress.questionsOrder.length === levelTerms.length * 2
+          ? userProgress.questionsOrder
+          : shuffleArray(array),
     });
   }
 
+  await user.save();
+
   res.send({ levels: levels });
 });
+
+router.post("/updateProgress", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+  const user = await UserModel.findById(userId);
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+
+  const levelProgress = user.progress.find((p) => p.level === req.body.currentLevel);
+  if (!levelProgress) {
+    return res.status(404).json({ error: "Level progress not found" });
+  }
+
+  await UserModel.updateOne(
+    { _id: userId, "progress.level": req.body.currentLevel },
+    { $set: { "progress.$.totalQuestionsAnswered": req.body.newIndex } }
+  );
+  res.send({ currentQuestionIndex: req.body.newIndex });
+});
+
+router.get("/getProgress", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).json({ error: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+  const level = Number(req.query.level);
+
+  if (!userId || isNaN(level)) {
+    return res.status(400).json({ error: "Missing userId or invalid level" });
+  }
+
+  try {
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const progressEntry = user.progress.find((p) => p.level === level);
+    if (!progressEntry) {
+      return res
+        .status(200)
+        .json({ message: "Progress for the specified level not found", totalQuestionsAnswered: 0 });
+    }
+
+    res.json({ totalQuestionsAnswered: progressEntry.totalQuestionsAnswered });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+router.get("/randomMC", async (req, res) => {
+  const randomWords = await TermModel.aggregate([
+    { $sample: { size: 3 } }, // $sample selects a specified number of documents randomly
+  ]);
+
+  res.send({ choices: randomWords });
+});
+
+// router.get("/sum", async (req, res) => {
+//   if (!req.user) {
+//     return res.status(401).send({ msg: "Not logged in" });
+//   }
+
+//   const userId = req.user._id;
+//   if (!userId) {
+//     return res.status(400).send({ error: "Missing userId" });
+//   }
+
+//   try {
+//     const user = await UserModel.findById(userId);
+//     if (!user) {
+//       return res.status(404).send({ error: "User not found" });
+//     }
+
+//     if (!Array.isArray(user.progress)) {
+//       return res.status(500).send({ error: "Invalid user progress data" });
+//     }
+
+//     const sum = user.progress.reduce((accumulator, level) => {
+//       const answered = Number(level.totalQuestionsAnswered) || 0; // Ensure numeric value
+//       return accumulator + answered;
+//     }, 0);
+
+//     res.status(200).send({ sum: sum });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).send({ error: "Server error" });
+//   }
+// });
 
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {

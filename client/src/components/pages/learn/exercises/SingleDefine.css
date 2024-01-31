@@ -1,11 +1,11 @@
-.Fill2-container {
+.SingleDefine-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
 }
-.Fill2-card {
+.SingleDefine-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.Fill2-content {
+.SingleDefine-content {
   width: fit-content;
   height: fit-content;
   max-width: 100%;
@@ -32,16 +32,16 @@
   justify-content: flex-start;
   text-wrap: wrap;
   /* overflow-wrap: break-word;
-      word-wrap: break-word;
-      hyphens: auto; */
+    word-wrap: break-word;
+    hyphens: auto; */
 }
 
-.Fill2-searchBar-container {
+.SingleDefine-searchBar-container {
   display: flex;
   flex-direction: row;
 }
 
-.Fill2-searchBar {
+.SingleDefine-searchBar {
   width: 20vw;
   min-width: 150px;
   height: 3vh;
@@ -53,7 +53,7 @@
   font-family: "Roboto serif", serif;
 }
 
-.Fill2-enter {
+.SingleDefine-enter {
   width: 5vw;
   min-width: 60px;
   height: 4vh;
@@ -66,11 +66,11 @@
   margin-right: 20px;
 }
 
-.Fill2-enter:hover {
+.SingleDefine-enter:hover {
   background-color: var(--primary--dim);
 }
 
-.Fill2-result {
+.SingleDefine-result {
   font-size: 15px;
   padding-top: 0.8vh;
 }

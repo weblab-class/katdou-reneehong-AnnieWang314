@@ -10,12 +10,12 @@ type Props = {
   aboutMe: string;
   userColor: string;
   userId: string | undefined;
-  wordsCompleted: string[];
+  // wordsCompleted: number;
   totalWordCount: number;
 };
 const Profile = (props: Props) => {
   const navigate = useNavigate();
-  const { userName, userDate, aboutMe, userColor, userId, wordsCompleted, totalWordCount } = props;
+  const { userName, userDate, aboutMe, userColor, userId, totalWordCount } = props;
   function formatDate(date) {
     const d = new Date(date);
     let month = "" + (d.getMonth() + 1); // Months are 0-based
@@ -61,17 +61,17 @@ const Profile = (props: Props) => {
         </div>
       </div>
 
-      <div className="Profile-progress-container">
+      {/* <div className="Profile-progress-container">
         <div className="Profile-progress">
           <div
             className="Profile-progress-bar"
-            style={{ width: `${(wordsCompleted.length / totalWordCount) * 100}%` }}
+            style={{ width: `${(wordsCompleted / totalWordCount) * 100}%` }}
           ></div>
         </div>
         <div className="Profile-wordCount">
-          {wordsCompleted.length}/{totalWordCount} words completed
+          {wordsCompleted}/{totalWordCount} words completed
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -65,6 +65,7 @@
   font-family: "Roboto", serif;
   border: none;
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .EditProfile-backButton {
