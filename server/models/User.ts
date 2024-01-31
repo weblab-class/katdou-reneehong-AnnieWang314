@@ -1,4 +1,5 @@
 import { Schema, model, Document, Types } from "mongoose";
+import { Term } from "./Term";
 
 const UserProgressSchema = new Schema({
   level: Number,
@@ -19,11 +20,19 @@ const UserSchema = new Schema({
   color: { type: String, default: "#d5d1ff" },
   date: { type: Date, default: Date.now },
   progress: [UserProgressSchema],
-  flashcardsOrder: [{ type: Schema.Types.ObjectId, ref: "Term" }],
+  flashcardsOrder: [
+    {
+      type: Schema.Types.Mixed,
+      default: [],
+    },
+  ],
+  currentIndex: {
+    type: Number,
+    default: 0,
+  },
   completedWords: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Term",
+      type: Schema.Types.Mixed,
       default: [],
     },
   ],
@@ -44,8 +53,9 @@ export interface User extends Document {
   color: { type: String; default: "#d5d1ff" };
   date: String;
   progress: UserProgress[];
-  flashcardsOrder: Types.ObjectId[];
-  completedWords: Types.ObjectId[];
+  flashcardsOrder: Term[];
+  currentIndex: number;
+  completedWords: Term[];
 }
 
 const UserModel = model<User>("User", UserSchema);

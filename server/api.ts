@@ -27,6 +27,14 @@ router.post("/initsocket", (req, res) => {
 // | write your API methods below!|
 // |------------------------------|
 
+function shuffle<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 router.post("/updateaboutme", (req, res) => {
   if (!req.user) {
     return res.status(401).send({ msg: "Not logged in" });
@@ -149,6 +157,90 @@ router.get("/terms", async (req, res) => {
   } catch (err) {
     res.status(500).send(err);
   }
+});
+
+router.get("/flashcardsOrder", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+  const user = await UserModel.findById(userId);
+
+  if (user && user.flashcardsOrder.length === 0) {
+    const terms = await TermModel.find({});
+    user.flashcardsOrder = shuffle(terms);
+    await user.save();
+
+    res.send({ flashcardsOrder: user.flashcardsOrder });
+  } else if (user) {
+    res.send({ flashcardsOrder: user.flashcardsOrder });
+  } else {
+    res.status(404).send("User not found.");
+  }
+});
+
+router.post("/updateFlashcardsOrder", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+
+  const user = await UserModel.findById(userId);
+
+  if (!user) {
+    return res.status(404).send("User not found.");
+  }
+
+  const terms = await TermModel.find({});
+
+  user.flashcardsOrder = shuffle(terms);
+  await user.save();
+
+  res
+    .status(200)
+    .send({
+      message: "Flashcards order updated successfully.",
+      flashcardsOrder: user.flashcardsOrder,
+    });
+});
+
+router.get("/currentIndex", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+  const user = await UserModel.findById(userId);
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+  res.send({ currentIndex: user.currentIndex });
+});
+
+router.post("/updateCurrentIndex", async (req, res) => {
+  if (!req.user) {
+    return res.status(401).send({ msg: "Not logged in" });
+  }
+
+  const userId = req.user._id;
+  const user = await UserModel.findById(userId);
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+
+  if (req.body.newIndex > user.flashcardsOrder.length - 1) {
+    user.currentIndex = user.flashcardsOrder.length - 1;
+  } else if (req.body.newIndex < 0) {
+    user.currentIndex = 0;
+  } else {
+    user.currentIndex = req.body.newIndex;
+  }
+  await user.save();
+  res.send({ currentIndex: user.currentIndex });
 });
 
 // anything else falls to this "not found" case

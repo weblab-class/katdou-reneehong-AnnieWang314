@@ -163,7 +163,7 @@ const App = () => {
             element={<Settings handleLogout={handleLogout} userId={userId} />}
             path="/settings"
           />
-          <Route element={<Flashcards words={words} userId={userId} />} path="/learn/flashcards" />
+          <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
           <Route element={<Exercises words={words} userId={userId} />} path="/learn/exercises" />
           <Route path="*" element={<NotFound />} />
         </Routes>
