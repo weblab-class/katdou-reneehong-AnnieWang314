@@ -63,6 +63,10 @@ const Home = () => {
         <p className="Home-about-qna-container">
           <div className="Home-about-column">
             <SingleQna
+              question="who is slangz for?"
+              answer="slangz is for people of all ages who want to learn gen z slang!"
+            />
+            <SingleQna
               question="why was slangz created?"
               answer="slangz was created to provide users with an interactive, customizable way to learn the newest slangz. this website is beginning with gen-z slang, and we hope to expand it to many other types of slang!"
             />
@@ -72,29 +76,27 @@ const Home = () => {
             />
             <SingleQna
               question="how will slangz help me learn?"
-              answer="slangz has two ways to explore slang: flashcards and practice. in flashcards, you can scroll terms, learn their definitions, explore their origins, and see them in example phrases. in practice, you will match each term to their definition, origin, or phrase."
+              answer="slangz has two ways to explore slang: flashcards and practice. in flashcards, you can scroll terms, learn their definitions, and see them in example phrases. in practice, you will match each term to their definition or phrase in a variety of ways."
+            />
+            
+          </div>
+          <div className="Home-about-column">
+            <SingleQna
+              question="where did we get our words from?"
+              answer="we sourced our words primarily from the gen z wikipedia page, and added some of our own examples as well. we used a profanity checker to ensure that any non pg-13 words are not included."
+            />
+            
+            <SingleQna
+              question="who are we?"
+              answer="we're three mit students who are hella lit and are really outta pocket"
+            />
+            <SingleQna
+              question="who is mommy?"
+              answer="renee"
             />
             <SingleQna
               question="send it? or blend it?"
               answer="we're sending it by flipping the classroom: kids are teaching adults. we're blending by blending generations of people together. "
-            />
-          </div>
-          <div className="Home-about-column">
-            <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
-            />
-            <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
-            />
-            <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
-            />
-            <SingleQna
-              question="dipsum lorum mom serum arorum"
-              answer="bones himpsum disciplus renee is mommy we can add a drawing hehe pookieee"
             />
           </div>
         </p>
