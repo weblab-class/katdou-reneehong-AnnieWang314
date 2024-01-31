@@ -1,0 +1,38 @@
+.SingleLevel-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  gap: 12px;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary);
+  border-radius: 8px;
+}
+.SingleLevel-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.SingleLevel-bar-container {
+  /* margin-left: 50px; */
+  width: 100%;
+  background-color: var(--mid--purple);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px black;
+}
+
+.SingleLevel-bar {
+  height: 16px;
+  background-color: #5d6adf;
+  border-radius: 8px;
+}
+
+.SingleLevel-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

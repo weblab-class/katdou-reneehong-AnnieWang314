@@ -87,7 +87,7 @@ const Flashcards = (props: Props) => {
             {currentIndex + 1} / {shuffledTerms.length}
           </div>
           <div onClick={startOver} className="Flashcards-start-over black-link">
-            Start Over
+            start over
           </div>
         </div>
         {shuffledTerms.length > 0 && (
