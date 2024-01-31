@@ -5,9 +5,13 @@
   height: fit-content;
   gap: 12px;
   width: 100%;
-  padding: 12px;
+  padding: 16px;
   background-color: var(--primary);
   border-radius: 8px;
+}
+.SingleLevel-container:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
 }
 .SingleLevel-top {
   display: flex;
@@ -31,8 +35,15 @@
 
 .SingleLevel-bottom {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.SingleLevel-word {
+  padding: 8px;
+  text-align: left;
+  font-size: calc(10px + 0.5vw);
+}
+.SingleLevel-word:nth-child(2),
+.SingleLevel-word:nth-child(4) {
+  text-align: right;
 }

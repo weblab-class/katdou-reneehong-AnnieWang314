@@ -5,8 +5,7 @@ const UserProgressSchema = new Schema({
   level: Number,
   words: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Term",
+      type: Schema.Types.Mixed,
     },
   ],
   questionsOrder: [Number],
@@ -40,7 +39,7 @@ const UserSchema = new Schema({
 
 export interface UserProgress extends Document {
   level: number;
-  words: Types.ObjectId[];
+  words: Term[];
   questionsOrder: number[];
   totalQuestionsAnswered: number;
 }

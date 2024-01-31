@@ -177,7 +177,7 @@ const App = () => {
             path="/settings"
           />
           <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
-          <Route element={<Exercises words={words} userId={userId} />} path="/learn/exercises" />
+          <Route element={<Exercises userId={userId} />} path="/learn/exercises" />
           <Route element={<MCs userId={userId}  />} path="/learn/mcs" />
           <Route path="*" element={<NotFound />} />
         </Routes>
