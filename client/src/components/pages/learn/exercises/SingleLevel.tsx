@@ -1,8 +1,9 @@
 import React from "react";
+import Term from "../../../../../../shared/Term";
 import "./SingleLevel.css";
 
 type Props = {
-  currentWords: string[];
+  currentWords: Term[];
   progress: number;
   level: number;
 };
@@ -24,9 +25,8 @@ const SingleLevel = (props: Props) => {
       </div>
       <div className="SingleLevel-bottom">
         {props.currentWords.map((word) => (
-          <div>{word}</div>
+          <div className="SingleLevel-word">{word.term}</div>
         ))}
-        <div className="u-bold">START</div>
       </div>
     </div>
   );

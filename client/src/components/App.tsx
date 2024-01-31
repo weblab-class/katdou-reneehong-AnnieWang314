@@ -10,14 +10,13 @@ import Learn from "./pages/learn/Learn";
 import Profile from "./pages/profile/Profile";
 import Settings from "./pages/profile/Settings";
 import EditProfile from "./pages/profile/EditProfile";
+import MCs from "./pages/learn/exercises/MCs";
 import Flashcards from "./pages/learn/Flashcards";
 import Exercises from "./pages/learn/exercises/Exercises";
 import Loading from "./pages/intermediate/Loading";
 import { socket } from "../client-socket";
 import User from "../../../shared/User";
 import Term from "../../../shared/Term";
-import Fill from "./pages/learn/Fill";
-import Fill2 from "./pages/learn/Fill2";
 import "../utilities.css";
 import {
   GoogleOAuthProvider,
@@ -178,15 +177,8 @@ const App = () => {
             path="/settings"
           />
           <Route element={<Flashcards userId={userId} />} path="/learn/flashcards" />
-          <Route
-            element={<Fill term="salty" meaning="upset" example="why you salty" />}
-            path="/learn/fill"
-          />
-          <Route
-            element={<Fill2 term="salty" meaning="upset" example="why you salty" />}
-            path="/learn/fill2"
-          />
-          <Route element={<Exercises words={words} userId={userId} />} path="/learn/exercises" />
+          <Route element={<Exercises userId={userId} />} path="/learn/exercises" />
+          <Route element={<MCs userId={userId}  />} path="/learn/mcs" />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
