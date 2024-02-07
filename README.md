@@ -1,4 +1,4 @@
-# SlangZ
+<h1 align="center">SlangZ</h1>
 
 SlangZ is a platform to help users learn and practice Generation Z slang.
 
